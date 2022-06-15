@@ -1,1 +1,2 @@
-export * from './lib/ts-core';
+export * from './lib/coercion';
+export * from './lib/mixins';
