@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@quentinpigne/ng-core": ["packages/ng-core/src/index.ts"],
       "@quentinpigne/ts-utils": ["packages/ts-utils/src/index.ts"]
     }
   },

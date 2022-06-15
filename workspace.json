@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "ng-core": "packages/ng-core",
     "ts-utils": "packages/ts-utils"
   }
 }
