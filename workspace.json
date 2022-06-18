@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "ng-core": "packages/ng-core",
+    "ng-ui-lib": "packages/ng-ui-lib",
     "ts-utils": "packages/ts-utils"
   }
 }

@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@quentinpigne/ng-core": ["packages/ng-core/src/index.ts"],
+      "@quentinpigne/ng-ui-lib": ["packages/ng-ui-lib/src/index.ts"],
       "@quentinpigne/ts-utils": ["packages/ts-utils/src/index.ts"]
     }
   },
