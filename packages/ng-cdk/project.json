@@ -1,0 +1,38 @@
+{
+  "projectType": "library",
+  "sourceRoot": "packages/ng-cdk/src",
+  "prefix": "ui",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/packages/ng-cdk"],
+      "options": {
+        "project": "packages/ng-cdk/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "packages/ng-cdk/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "packages/ng-cdk/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/packages/ng-cdk"],
+      "options": {
+        "jestConfig": "packages/ng-cdk/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/ng-cdk/**/*.ts", "packages/ng-cdk/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
