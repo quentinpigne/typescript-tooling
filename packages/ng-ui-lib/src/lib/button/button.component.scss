@@ -1,0 +1,22 @@
+$padding: 10px 10px;
+
+.ui-button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+
+  background-color: #6200EE;
+  color: white;
+
+  padding: $padding;
+  box-shadow:
+    0px 2px 1px -1px rgba(black, 0.2),
+    0px 1px 1px 0px rgba(black, 0.14),
+    0px 1px 3px 0px rgba(black, 0.12);
+  border-radius: 4px;
+
+  &:disabled {
+    background-color: gray;
+    opacity: 0.8;
+  }
+}
