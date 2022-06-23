@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from '@angular/core';
+
+import { ButtonBase } from '@quentinpigne/ng-cdk';
 
 @Component({
   selector: 'button[ui-button]',
@@ -8,10 +10,6 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulati
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonComponent {
+export class ButtonComponent extends ButtonBase {
   @HostBinding('class') cssClass: string = 'ui-button';
-
-  @Input()
-  @HostBinding('disabled')
-  disabled: boolean = false;
 }
