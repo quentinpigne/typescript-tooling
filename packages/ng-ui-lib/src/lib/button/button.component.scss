@@ -1,9 +1,9 @@
+@use "packages/ng-cdk/src/lib/button/button-common";
+
 $padding: 10px 10px;
 
 .ui-button {
-  cursor: pointer;
-  outline: none;
-  border: none;
+  @include button-common.reset();
 
   background-color: #6200EE;
   color: white;
