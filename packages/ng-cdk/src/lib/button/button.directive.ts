@@ -10,4 +10,4 @@ const _ButtonBase = mixinDisabled(class {});
     '[attr.disabled]': 'disabled || null',
   }
 })
-export class ButtonBase extends _ButtonBase {}
+export class ButtonCdk extends _ButtonBase {}
