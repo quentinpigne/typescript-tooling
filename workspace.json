@@ -5,6 +5,7 @@
     "ng-cdk": "packages/ng-cdk",
     "ng-core": "packages/ng-core",
     "ng-ui-lib": "packages/ng-ui-lib",
+    "node-utils": "packages/node-utils",
     "ts-utils": "packages/ts-utils"
   }
 }
