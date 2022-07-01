@@ -6,6 +6,7 @@
     "types": ["jest", "node"]
   },
   "include": [
+    "__mocks__/*.ts",
     "jest.config.ts",
     "**/*.test.ts",
     "**/*.spec.ts",
