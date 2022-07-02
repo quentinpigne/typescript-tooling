@@ -1,0 +1,26 @@
+@use "packages/ng-cdk/src/lib/form-field/form-field-common";
+
+$label-color: lightblue;
+$hint-color: lightgrey;
+$error-color: red;
+
+.ui-label {
+  display: block;
+  color: lightblue;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+.ui-hint {
+  display: block;
+  color: $hint-color;
+  font-size: 0.7em;
+  font-weight: bold;
+}
+
+.ui-error {
+  display: block;
+  color: $error-color;
+  font-size: 0.7em;
+  font-weight: bold;
+}
