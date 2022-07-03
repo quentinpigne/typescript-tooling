@@ -6,7 +6,7 @@ import { FormFieldCdk } from '@quentinpigne/ng-cdk';
   selector: 'ui-form-field',
   exportAs: 'uiFormField',
   templateUrl: './form-field.component.html',
-  styleUrls: ['./form-field.component.scss'],
+  styleUrls: ['./form-field.component.scss', './form-field-input.component.scss'],
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
