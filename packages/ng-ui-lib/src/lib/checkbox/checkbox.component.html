@@ -1,0 +1,13 @@
+<input type="checkbox"
+  class="ui-checkbox-input"
+  [attr.id]="inputId"
+  [required]="required"
+  [checked]="checked"
+  [attr.value]="value"
+  [disabled]="disabled"
+  [attr.name]="name"
+  (change)="onChange($event)"
+  (click)="onInputClick($event)">
+<label [attr.for]="inputId">
+  <ng-content></ng-content>
+</label>
