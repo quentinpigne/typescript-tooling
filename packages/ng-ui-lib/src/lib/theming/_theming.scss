@@ -1,0 +1,36 @@
+@use "sass:map";
+
+@use "./all-themes";
+@use "./core-theme";
+@use "./typography/typography";
+@use "./typography/core-typography";
+
+/// Define a theme by setting up a map containing color and typography config given as parameters
+/// @param {Map} $color-config
+///   The color configuration for the theme
+/// @param {Map} $typography-config
+///   The typography configuration for the theme
+/// @return {Map} The complete theme map, to be used by component's themes
+@function define-theme(
+  $color-config,
+  $typography-config: typography.define-typography-config()
+) {
+  @return (
+    color-config: $color-config,
+    typography-config: $typography-config
+  );
+}
+
+/// Entry point for every themes to completely set them up
+/// @param {Map} $theme
+///   The theme to be applied to the application
+@mixin setup-theme($theme) {
+  $color-config: map.get($theme, color-config);
+  $typography-config: map.get($theme, typography-config);
+  // Setting up core theme and typography
+  @include core-theme.core-theme($color-config);
+  @include core-typography.typography-hierarchy($typography-config);
+
+  // Setting up components themes and typographies
+  @include all-themes.all-component-themes($theme);
+}

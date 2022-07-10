@@ -1,0 +1,29 @@
+@use "./typography";
+
+/// Base typographic styles based on a given typography config.
+/// @param {Map} $typography-config A typography config for an entire theme.
+@mixin typography-hierarchy($typography-config) {
+  h1 {
+    @include typography.apply-level($typography-config, h1);
+  }
+
+  h2 {
+    @include typography.apply-level($typography-config, h2);
+  }
+
+  h3 {
+    @include typography.apply-level($typography-config, h3);
+  }
+
+  h4 {
+    @include typography.apply-level($typography-config, h4);
+  }
+
+  h5 {
+    @include typography.apply-level($typography-config, h5);
+  }
+
+  p {
+    @include typography.apply-level($typography-config, body);
+  }
+}

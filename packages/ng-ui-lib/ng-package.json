@@ -3,5 +3,9 @@
   "dest": "../../dist/packages/ng-ui-lib",
   "lib": {
     "entryFile": "src/index.ts"
-  }
+  },
+  "assets": [
+    "./src/lib/**/*-theme.scss",
+    "./src/lib/theming/**/*.scss"
+  ]
 }

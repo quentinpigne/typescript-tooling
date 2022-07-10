@@ -1,0 +1,16 @@
+@use "../theming";
+
+// Define colors for the theme
+$primary-color: #6200EE;
+$disabled-color: rgba(128, 128, 128, 0.8);
+$text-color: white;
+
+$color-config: (
+  primary-color: $primary-color,
+  text-color: $text-color
+);
+
+// Define the theme
+$theme: theming.define-theme($color-config);
+
+@include theming.setup-theme($theme);

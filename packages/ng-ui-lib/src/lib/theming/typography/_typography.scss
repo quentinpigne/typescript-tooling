@@ -1,0 +1,65 @@
+@use "sass:map";
+
+/// Defines a typography level.
+/// @param {String} $font-size font-size for the level.
+/// @param {String | Number} $line-height line-height for the level. (default to font-size)
+/// @param {String | Number} $font-weight font-weight for the level. (default 400)
+/// @param {String} $font-family font-family for the level. (default 'Roboto', sans-serif)
+/// @param {String} $letter-spacing letter-spacing for the level. (default 'normal')
+/// @return {Map} A map representing the configuration of the typographic level.
+@function define-typography-level(
+  $font-size,
+  $line-height: $font-size,
+  $font-weight: 400,
+  $font-family: ('Roboto', sans-serif),
+  $letter-spacing: normal
+) {
+  @return (
+    font-weight: $font-weight,
+    font-size: $font-size,
+    line-height: $line-height,
+    font-family: $font-family,
+    letter-spacing: $letter-spacing
+  );
+}
+
+/// Defines a collection of typography levels to configure typography for an application.
+/// Any level not specified will get the default values according to design system specifications.
+/// @param {Map} $h1 Configuration for the "h1" typographic level.
+/// @param {Map} $h2 Configuration for the "h2" typographic level.
+/// @param {Map} $h3 Configuration for the "h3" typographic level.
+/// @param {Map} $h4 Configuration for the "h4" typographic level.
+/// @param {Map} $h5 Configuration for the "h5" typographic level.
+/// @param {Map} $body Configuration for the "body" typographic level.
+/// @param {Map} $button Configuration for the "button" typographic level.
+/// @return {Map} A typography config for the application.
+@function define-typography-config(
+  $h1: define-typography-level(38px),
+  $h2: define-typography-level(24px),
+  $h3: define-typography-level(18px),
+  $h4: define-typography-level(14px),
+  $h5: define-typography-level(10px),
+  $body: define-typography-level(12px, $line-height: 1.5),
+  $button: define-typography-level(12px)
+) {
+  @return (
+    h1: $h1,
+    h2: $h2,
+    h3: $h3,
+    h4: $h4,
+    h5: $h5,
+    body: $body,
+    button: $button
+  );
+}
+
+/// Convert a typographic level configuration to corresponding CSS properties.
+/// @param {Map} $typography-config A typography config.
+/// @param {String} $level The desired level.
+@mixin apply-level($typography-config, $level) {
+  font-size: map.get(map.get($typography-config, $level), font-size);
+  line-height: map.get(map.get($typography-config, $level), line-height);
+  font-weight: map.get(map.get($typography-config, $level), font-weight);
+  font-family: map.get(map.get($typography-config, $level), font-family);
+  letter-spacing: map.get(map.get($typography-config, $level), letter-spacing);
+}

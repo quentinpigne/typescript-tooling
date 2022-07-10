@@ -1,0 +1,35 @@
+@use "sass:math";
+
+$base-size: 22px;
+
+@mixin base-size {
+  width: $base-size;
+  height: $base-size;
+  line-height: $base-size;
+}
+
+@mixin position($badge-class) {
+  .#{$badge-class}-top {
+    .#{$badge-class}-embedded {
+      top: math.div(-$base-size, 2);
+    }
+  }
+
+  .#{$badge-class}-bottom {
+    .#{$badge-class}-embedded {
+      bottom: math.div(-$base-size, 2);
+    }
+  }
+
+  .#{$badge-class}-right {
+    .#{$badge-class}-embedded {
+      right: -$base-size;
+    }
+  }
+
+  .#{$badge-class}-left {
+    .#{$badge-class}-embedded {
+      left: -$base-size;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+@use "packages/ng-core/src/lib/overlay";
+
+@mixin core-theme($theme) {
+  @include overlay.overlay();
+}
