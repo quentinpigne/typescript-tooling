@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
-import { mixinDisabled } from '@quentinpigne/ng-core';
+import { CanBeDisabled, mixinDisabled } from '@quentinpigne/ng-core';
 
 const _ButtonBase = mixinDisabled(class {});
 
@@ -8,6 +8,6 @@ const _ButtonBase = mixinDisabled(class {});
   inputs: ['disabled'],
   host: {
     '[attr.disabled]': 'disabled || null',
-  }
+  },
 })
-export class ButtonCdk extends _ButtonBase {}
+export class ButtonCdk extends _ButtonBase implements CanBeDisabled {}
