@@ -1,0 +1,33 @@
+@use "sass:map";
+@use "../theming/typography/typography";
+
+@mixin _color($color-config) {
+}
+
+@mixin _typography($typography-config) {
+  .ui-card {
+    &-title {
+      @include typography.apply-level($typography-config, h1);
+    }
+
+    &-subtitle {
+      @include typography.apply-level($typography-config, h4);
+    }
+
+    &-content {
+      @include typography.apply-level($typography-config, body);
+    }
+
+    &-footer {
+      @include typography.apply-level($typography-config, h5);
+    }
+  }
+}
+
+@mixin theme($theme) {
+  $color-config: map.get($theme, color-config);
+  $typography-config: map.get($theme, typography-config);
+
+  @include _color($color-config);
+  @include _typography($typography-config);
+}
