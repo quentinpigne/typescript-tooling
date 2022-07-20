@@ -1,0 +1,15 @@
+@use "sass:map";
+
+@mixin _color($color-config) {
+  .ui-progress-spinner {
+    circle {
+      stroke: map.get($color-config, primary-color);
+    }
+  }
+}
+
+@mixin theme($theme) {
+  $color-config: map.get($theme, color-config);
+
+  @include _color($color-config);
+}

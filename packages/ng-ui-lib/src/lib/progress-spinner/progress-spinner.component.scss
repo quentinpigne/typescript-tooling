@@ -1,0 +1,27 @@
+.ui-progress-spinner {
+  position: relative;
+  overflow: hidden;
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform-origin: center;
+    animation: ui-progress-spinner-rotate 2s linear infinite;
+  }
+
+  circle {
+    fill: none;
+    transform-origin: center;
+  }
+}
+
+@keyframes ui-progress-spinner-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
