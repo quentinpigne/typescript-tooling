@@ -1,0 +1,85 @@
+.ui-progress-bar {
+  position: relative;
+  overflow: hidden;
+
+  border: 0 none;
+  height: 1.5rem;
+  border-radius: 3px;
+}
+
+.ui-progress-bar-determinate {
+  .ui-progress-bar-value {
+    position: absolute;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 0%;
+
+    border: 0 none;
+    margin: 0;
+    transition: width 1s ease-in-out;
+  }
+
+  .ui-progress-bar-label {
+    display: inline-flex;
+    line-height: 1.5rem;
+  }
+}
+
+.ui-progress-bar-indeterminate {
+  .ui-progress-bar-value::before {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    left: 100%;
+    right: -90%;
+    bottom: 0;
+    will-change: left, right;
+    animation: ui-progress-bar-indeterminate-primary-animation 2.1s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite;
+  }
+
+  .ui-progress-bar-value::after {
+    content: '';
+    position: absolute;
+    background-color: inherit;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    will-change: left, right;
+    animation: ui-progress-bar-indeterminate-secondary-animation 2.1s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+    animation-delay: 1.15s;
+  }
+}
+
+@keyframes ui-progress-bar-indeterminate-primary-animation {
+  0% {
+    left: -35%;
+    right: 100%;
+  }
+  60% {
+    left: 100%;
+    right: -90%;
+  }
+  100% {
+    left: 100%;
+    right: -90%;
+  }
+}
+
+@keyframes ui-progress-bar-indeterminate-secondary-animation {
+  0% {
+    left: -200%;
+    right: 100%;
+  }
+  60% {
+    left: 107%;
+    right: -8%;
+  }
+  100% {
+    left: 107%;
+    right: -8%;
+  }
+}

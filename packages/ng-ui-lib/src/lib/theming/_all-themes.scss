@@ -1,9 +1,11 @@
 @use "../badge/badge-theme";
 @use "../button/button-theme";
 @use "../card/card-theme";
+@use "../progress-bar/progress-bar-theme";
 
 @mixin all-component-themes($theme) {
   @include badge-theme.theme($theme);
   @include button-theme.theme($theme);
   @include card-theme.theme($theme);
+  @include progress-bar-theme.theme($theme);
 }
