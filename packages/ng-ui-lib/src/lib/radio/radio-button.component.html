@@ -1,0 +1,11 @@
+<input type="radio"
+  class="ui-radio-input"
+  [id]="inputId"
+  [checked]="checked"
+  [attr.name]="name"
+  [attr.value]="value"
+  (change)="onChange($event)"
+  (click)="onInputClick($event)">
+<label [attr.for]="inputId">
+  <ng-content></ng-content>
+</label>
