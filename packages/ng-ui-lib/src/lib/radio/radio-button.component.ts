@@ -2,17 +2,14 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  EventEmitter,
   HostBinding,
   Inject,
-  Input,
   OnInit,
   Optional,
-  Output,
   ViewEncapsulation,
 } from '@angular/core';
 
-import { getUniqueComponentId } from '@quentinpigne/ng-core';
+import { RadioButtonCdk } from '@quentinpigne/ng-cdk';
 
 import { RadioGroupDirective, UI_RADIO_GROUP } from './radio-group.directive';
 
@@ -21,97 +18,22 @@ import { RadioGroupDirective, UI_RADIO_GROUP } from './radio-group.directive';
   exportAs: 'uiRadioButton',
   templateUrl: './radio-button.component.html',
   styleUrls: ['./radio-button.component.scss'],
+  host: {
+    '[id]': 'id',
+    '[class.ui-radio-button-selected]': 'selected',
+    '[class.ui-radio-button-disabled]': 'disabled',
+  },
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RadioButtonComponent implements OnInit {
+export class RadioButtonComponent extends RadioButtonCdk<RadioGroupDirective> implements OnInit {
   @HostBinding('class') cssClass: string = 'ui-radio-button';
-
-  private _uniqueId: string = getUniqueComponentId('ui-radio-button');
-
-  @Input()
-  @HostBinding('attr.id')
-  id: string = this._uniqueId;
-
-  get inputId(): string {
-    return `${this.id || this._uniqueId}-input`;
-  }
-
-  @Input() name: string | undefined;
-
-  @Input()
-  get checked(): boolean {
-    return this._checked;
-  }
-  set checked(newCheckedValue: boolean) {
-    if (this._checked !== newCheckedValue) {
-      this._checked = newCheckedValue;
-      if (this._radioGroup) {
-        const isSelected: boolean = this._radioGroup.value === this.value;
-        if (newCheckedValue && !isSelected) {
-          this._radioGroup.selected = this;
-        } else if (!newCheckedValue && isSelected) {
-          this._radioGroup.selected = null;
-        }
-      }
-    }
-    this._changeDetectorRef.markForCheck();
-  }
-  private _checked: boolean = false;
-
-  @Input()
-  get value(): unknown {
-    return this._value;
-  }
-  set value(newValue: unknown) {
-    if (this._value !== newValue) {
-      this._value = newValue;
-      if (this._radioGroup) {
-        if (!this.checked) {
-          this.checked = this._radioGroup.value === newValue;
-        }
-        if (this.checked) {
-          this._radioGroup.selected = this;
-        }
-      }
-    }
-  }
-  private _value: unknown = null;
-
-  @Input()
-  get disabled(): boolean {
-    return this._disabled || this._radioGroup?.disabled;
-  }
-  set disabled(newDisabledValue: boolean) {
-    if (this._disabled !== newDisabledValue) {
-      this._disabled = newDisabledValue;
-      this._changeDetectorRef.markForCheck();
-    }
-  }
-  private _disabled: boolean = false;
-
-  @Input()
-  get required(): boolean {
-    return this._required || this._radioGroup?.required;
-  }
-  set required(newRequiredValue: boolean) {
-    if (this._required !== newRequiredValue) {
-      this._required = newRequiredValue;
-      this._changeDetectorRef.markForCheck();
-    }
-  }
-  private _required: boolean = false;
-
-  // eslint-disable-next-line @angular-eslint/no-output-native
-  @Output() readonly change: EventEmitter<unknown> = new EventEmitter<unknown>();
-
-  private _radioGroup: RadioGroupDirective;
 
   constructor(
     @Optional() @Inject(UI_RADIO_GROUP) radioGroup: RadioGroupDirective,
-    private _changeDetectorRef: ChangeDetectorRef,
+    changeDetectorRef: ChangeDetectorRef,
   ) {
-    this._radioGroup = radioGroup;
+    super(changeDetectorRef, radioGroup);
   }
 
   ngOnInit(): void {
@@ -122,10 +44,6 @@ export class RadioButtonComponent implements OnInit {
       }
       this.name = this._radioGroup.name;
     }
-  }
-
-  markForCheck(): void {
-    this._changeDetectorRef.markForCheck();
   }
 
   onChange(event: Event): void {
