@@ -1,40 +1,61 @@
 import { ChangeDetectorRef, Directive, EventEmitter, Input, Output, QueryList } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
-import { CanBeDisabled, getUniqueComponentId, mixinDisabled } from '@quentinpigne/ng-core';
+import {
+  CanBeChecked,
+  getUniqueComponentId,
+  HasName,
+  HasValue,
+  mixinDisabled,
+  mixinName,
+  mixinRadioControlValueAccessor,
+  mixinRequired,
+  mixinValue,
+} from '@quentinpigne/ng-core';
 
-const _RadioGroupBase = mixinDisabled(class {});
+const _RadioGroupBase = mixinRadioControlValueAccessor(
+  mixinDisabled(
+    mixinName(
+      mixinRequired(
+        mixinValue(
+          class {
+            constructor(public _changeDetectorRef: ChangeDetectorRef) {}
+          },
+        ),
+      ),
+      getUniqueComponentId('cdk-radio-group'),
+    ),
+  ),
+);
 
 @Directive()
-export abstract class RadioGroupCdk<
-    T extends { checked: boolean; value: unknown; name: string | undefined; markForCheck: () => void },
-  >
+export abstract class RadioGroupCdk<T extends CanBeChecked & HasName & HasValue<unknown> & { markForCheck: () => void }>
   extends _RadioGroupBase
-  implements CanBeDisabled, ControlValueAccessor
+  implements ControlValueAccessor
 {
   protected _radios: QueryList<T> | undefined;
 
   @Input()
-  get name(): string {
-    return this._name;
+  override get name(): string | undefined {
+    return super.name;
   }
-  set name(newName: string) {
-    this._name = newName;
-    this._updateRadioButtonNames();
+  override set name(newName: string | undefined) {
+    if (newName !== super.name) {
+      super.name = newName;
+      this._updateRadioButtonNames();
+    }
   }
-  private _name: string = getUniqueComponentId('cdk-radio-group');
 
   @Input()
-  get value(): unknown {
-    return this._value;
+  override get value(): unknown {
+    return super.value;
   }
-  set value(newValue: unknown) {
-    if (this._value !== newValue) {
-      this._value = newValue;
+  override set value(newValue: unknown) {
+    if (newValue !== super.value) {
+      super.value = newValue;
       this._updateSelectedRadioFromValue();
     }
   }
-  private _value: unknown;
 
   @Input()
   get selected(): T | null {
@@ -49,32 +70,30 @@ export abstract class RadioGroupCdk<
 
   @Input()
   override get disabled(): boolean {
-    return this._disabled;
+    return super.disabled;
   }
   override set disabled(newDisabledValue: boolean) {
-    this._disabled = newDisabledValue;
-    this._radios?.forEach((radio: T) => radio.markForCheck());
+    if (newDisabledValue !== this.disabled) {
+      super.disabled = newDisabledValue;
+      this._radios?.forEach((radio: T) => radio.markForCheck());
+    }
   }
-  private _disabled: boolean = false;
 
   @Input()
-  get required(): boolean {
-    return this._required;
+  override get required(): boolean {
+    return super.required;
   }
-  set required(newRequiredValue: boolean) {
-    this._required = newRequiredValue;
-    this._radios?.forEach((radio: T) => radio.markForCheck());
+  override set required(newRequiredValue: boolean) {
+    if (newRequiredValue !== super.required) {
+      super.required = newRequiredValue;
+      this._radios?.forEach((radio: T) => radio.markForCheck());
+    }
   }
-  private _required: boolean = false;
 
   @Output() readonly change: EventEmitter<unknown> = new EventEmitter<unknown>();
 
-  _controlValueAccessorChangeFn: (value: unknown) => void = () => {};
-
-  _onTouched: () => unknown = () => {};
-
-  constructor(private _changeDetectorRef: ChangeDetectorRef) {
-    super();
+  constructor(changeDetectorRef: ChangeDetectorRef) {
+    super(changeDetectorRef);
   }
 
   private _updateRadioButtonNames(): void {
@@ -86,7 +105,7 @@ export abstract class RadioGroupCdk<
 
   private _updateSelectedRadioFromValue(): void {
     this._radios?.forEach((radio: T) => {
-      radio.checked = this._value === radio.value;
+      radio.checked = this.value === radio.value;
     });
   }
 
@@ -94,23 +113,5 @@ export abstract class RadioGroupCdk<
     if (this._selected && !this._selected.checked) {
       this._selected.checked = true;
     }
-  }
-
-  writeValue(value: unknown): void {
-    this.value = value;
-    this._changeDetectorRef.markForCheck();
-  }
-
-  registerOnChange(fn: (value: unknown) => void): void {
-    this._controlValueAccessorChangeFn = fn;
-  }
-
-  registerOnTouched(fn: () => unknown): void {
-    this._onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-    this._changeDetectorRef.markForCheck();
   }
 }

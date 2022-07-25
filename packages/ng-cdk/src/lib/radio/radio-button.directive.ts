@@ -1,16 +1,37 @@
 import { ChangeDetectorRef, Directive, EventEmitter, Input, Output } from '@angular/core';
 
-import { CanBeDisabled, getUniqueComponentId, mixinDisabled } from '@quentinpigne/ng-core';
+import {
+  CanBeDisabled,
+  CanBeRequired,
+  getUniqueComponentId,
+  HasValue,
+  mixinChecked,
+  mixinDisabled,
+  mixinName,
+  mixinRequired,
+  mixinValue,
+} from '@quentinpigne/ng-core';
 
-const _RadioButtonBase = mixinDisabled(class {});
+const _RadioButtonBase = mixinChecked(
+  mixinDisabled(
+    mixinName(
+      mixinRequired(
+        mixinValue(
+          class {
+            constructor(public _changeDetectorRef: ChangeDetectorRef) {}
+          },
+        ),
+      ),
+    ),
+  ),
+);
 
-@Directive()
+@Directive({
+  inputs: ['name'],
+})
 export abstract class RadioButtonCdk<
-    T extends CanBeDisabled & { selected: RadioButtonCdk<T> | null; value: unknown; required: boolean },
-  >
-  extends _RadioButtonBase
-  implements CanBeDisabled
-{
+  T extends CanBeDisabled & CanBeRequired & HasValue<unknown> & { selected: RadioButtonCdk<T> | null },
+> extends _RadioButtonBase {
   private _uniqueId: string = getUniqueComponentId('cdk-radio-button');
 
   @Input() id: string = this._uniqueId;
@@ -19,15 +40,13 @@ export abstract class RadioButtonCdk<
     return `${this.id || this._uniqueId}-input`;
   }
 
-  @Input() name: string | undefined;
-
   @Input()
-  get checked(): boolean {
-    return this._checked;
+  override get checked(): boolean {
+    return super.checked;
   }
-  set checked(newCheckedValue: boolean) {
-    if (this._checked !== newCheckedValue) {
-      this._checked = newCheckedValue;
+  override set checked(newCheckedValue: boolean) {
+    if (newCheckedValue !== super.checked) {
+      super.checked = newCheckedValue;
       if (this._radioGroup) {
         const isSelected: boolean = this._radioGroup.value === this.value;
         if (newCheckedValue && !isSelected) {
@@ -37,17 +56,15 @@ export abstract class RadioButtonCdk<
         }
       }
     }
-    this._changeDetectorRef.markForCheck();
   }
-  private _checked: boolean = false;
 
   @Input()
-  get value(): unknown {
-    return this._value;
+  override get value(): unknown {
+    return super.value;
   }
-  set value(newValue: unknown) {
-    if (this._value !== newValue) {
-      this._value = newValue;
+  override set value(newValue: unknown) {
+    if (newValue !== super.value) {
+      super.value = newValue;
       if (this._radioGroup) {
         if (!this.checked) {
           this.checked = this._radioGroup.value === newValue;
@@ -58,35 +75,27 @@ export abstract class RadioButtonCdk<
       }
     }
   }
-  private _value: unknown = null;
 
   @Input()
-  get required(): boolean {
-    return this._required || (this._radioGroup && this._radioGroup.required);
+  override get required(): boolean {
+    return super.required || (this._radioGroup && this._radioGroup.required);
   }
-  set required(newRequiredValue: boolean) {
-    if (this._required !== newRequiredValue) {
-      this._required = newRequiredValue;
-      this._changeDetectorRef.markForCheck();
-    }
+  override set required(newRequiredValue: boolean) {
+    super.disabled = newRequiredValue;
   }
-  private _required: boolean = false;
 
   @Input()
   override get disabled(): boolean {
     return super.disabled || (this._radioGroup && this._radioGroup.disabled);
   }
   override set disabled(newDisabledValue: boolean) {
-    if (super.disabled !== newDisabledValue) {
-      super.disabled = newDisabledValue;
-      this._changeDetectorRef.markForCheck();
-    }
+    super.disabled = newDisabledValue;
   }
 
   @Output() readonly change: EventEmitter<unknown> = new EventEmitter<unknown>();
 
-  constructor(protected _changeDetectorRef: ChangeDetectorRef, protected _radioGroup: T) {
-    super();
+  constructor(changeDetectorRef: ChangeDetectorRef, protected _radioGroup: T) {
+    super(changeDetectorRef);
   }
 
   markForCheck(): void {

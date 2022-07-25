@@ -1,10 +1,14 @@
-import { Constructor } from '@quentinpigne/ts-utils';
+import { coerceBooleanValue, Constructor } from '@quentinpigne/ts-utils';
+
+import { HasChangeDetectorRef } from './utils';
 
 export interface CanBeDisabled {
   disabled: boolean;
 }
 
-export function mixinDisabled<TBase extends Constructor>(Base: TBase): TBase & Constructor<CanBeDisabled> {
+export function mixinDisabled<TBase extends Constructor<HasChangeDetectorRef>>(
+  Base: TBase,
+): TBase & Constructor<CanBeDisabled> {
   return class Disabled extends Base {
     private _disabled: boolean = false;
 
@@ -12,8 +16,11 @@ export function mixinDisabled<TBase extends Constructor>(Base: TBase): TBase & C
       return this._disabled;
     }
 
-    set disabled(disabled: boolean) {
-      this._disabled = disabled;
+    set disabled(disabled: string | boolean | null) {
+      if (disabled !== this.disabled) {
+        this._disabled = coerceBooleanValue(disabled);
+        this._changeDetectorRef?.markForCheck();
+      }
     }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
