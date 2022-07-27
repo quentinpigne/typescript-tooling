@@ -4,6 +4,7 @@ export * from './disabled';
 export * from './name';
 export * from './radio-control-value-accessor';
 export * from './required';
+export * from './select-control-value-accessor';
 export * from './selected';
 export * from './utils';
 export * from './value';

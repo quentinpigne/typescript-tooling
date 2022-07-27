@@ -5,3 +5,4 @@ export * from './lib/common';
 export * from './lib/form-field';
 export * from './lib/input';
 export * from './lib/radio';
+export * from './lib/select';
