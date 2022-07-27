@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '../theming/typography/typography';
+
+@mixin _color($color-config) {
+  .ui-tab-group-header {
+    color: map.get($color-config, primary-color);
+  }
+}
+
+@mixin _typography($typography-config) {
+  .ui-tab-group {
+    @include typography.apply-level($typography-config, body);
+  }
+}
+
+@mixin theme($theme) {
+  $color-config: map.get($theme, color-config);
+  $typography-config: map.get($theme, typography-config);
+
+  @include _color($color-config);
+  @include _typography($typography-config);
+}

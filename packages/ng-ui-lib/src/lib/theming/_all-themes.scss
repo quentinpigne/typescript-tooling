@@ -3,6 +3,7 @@
 @use "../card/card-theme";
 @use "../progress-bar/progress-bar-theme";
 @use "../progress-spinner/progress-spinner-theme";
+@use "../tabs/tabs-theme";
 
 @mixin all-component-themes($theme) {
   @include badge-theme.theme($theme);
@@ -10,4 +11,5 @@
   @include card-theme.theme($theme);
   @include progress-bar-theme.theme($theme);
   @include progress-spinner-theme.theme($theme);
+  @include tabs-theme.theme($theme);
 }

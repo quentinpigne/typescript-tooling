@@ -7,3 +7,4 @@ export * from './lib/input';
 export * from './lib/progress-bar';
 export * from './lib/progress-spinner';
 export * from './lib/radio';
+export * from './lib/tabs';

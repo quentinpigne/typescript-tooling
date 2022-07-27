@@ -1,0 +1,11 @@
+<div class="ui-tab-group-header">
+  <div class="ui-tab-label"
+    *ngFor="let tab of tabs; let i = index"
+    [class.ui-tab-label-selected]="selectedIndex === i"
+    (click)="this.selectedIndex = i">
+    {{ tab.label }}
+  </div>
+</div>
+<div class="ui-tab-group-body">
+  <ng-container [uiPortalOutlet]="selectedTab.contentPortal"></ng-container>
+</div>

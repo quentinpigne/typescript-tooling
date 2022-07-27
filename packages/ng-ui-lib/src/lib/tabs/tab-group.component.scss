@@ -1,0 +1,20 @@
+.ui-tab-group-header {
+  display: flex;
+  border-bottom: 1px solid rgba(black, 0.25);
+
+  .ui-tab-label {
+    cursor: pointer;
+    padding: 10px 30px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+
+    &:hover {
+      background-color: rgba(black, 0.3);
+    }
+
+    &-selected {
+      border-bottom: 2px solid blue;
+    }
+  }
+}
