@@ -1,17 +1,14 @@
 import { Directive, ElementRef, Renderer2 } from '@angular/core';
 
-export type BadgePosition =
-  | 'top left'
-  | 'top right'
-  | 'bottom left'
-  | 'bottom right'
-  | 'left'
-  | 'right'
-  | 'top'
-  | 'bottom';
+import { Constructor } from '@quentinpigne/ts-utils';
+import { EmptyClass, HasContent, mixinContent } from '@quentinpigne/ng-core';
+
+import { Badge, BadgeContent, BadgePosition } from './types';
+
+const _BadgeBase: Constructor<HasContent<BadgeContent>> = mixinContent<BadgeContent>()(EmptyClass);
 
 @Directive()
-export class BadgeCdk {
+export class BadgeCdk extends _BadgeBase implements Badge {
   isTop: boolean = true;
   isBottom: boolean = false;
   isRight: boolean = true;
@@ -24,18 +21,19 @@ export class BadgeCdk {
     this.isLeft = !this.isRight;
   }
 
-  get content(): string | number | undefined | null {
-    return this._content;
+  override get content(): BadgeContent {
+    return super.content;
   }
-  set content(newContent: string | number | undefined | null) {
-    this._content = newContent;
+  override set content(newContent: BadgeContent) {
+    super.content = newContent;
     this.updateBadgeElement(newContent);
   }
-  private _content: string | number | undefined | null;
 
   protected _badgeElement: HTMLSpanElement | undefined;
 
-  constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+    super();
+  }
 
   protected createBadgeElement(badgeClass: string): HTMLSpanElement {
     const badgeElement = this.renderer.createElement('span') as HTMLSpanElement;
@@ -49,13 +47,13 @@ export class BadgeCdk {
     return badgeElement;
   }
 
-  protected updateBadgeElement(newContent: string | number | undefined | null): void {
+  protected updateBadgeElement(newContent: BadgeContent): void {
     if (this._badgeElement) {
       this._badgeElement.textContent = this.normalizeContent(newContent);
     }
   }
 
-  private normalizeContent(content: string | number | undefined | null): string {
+  private normalizeContent(content: BadgeContent): string {
     return content == null ? '' : `${content}`;
   }
 }

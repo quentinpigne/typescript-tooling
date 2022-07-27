@@ -3,8 +3,6 @@
 @use "../theming/typography/typography";
 @use "packages/ng-cdk/src/lib/badge/badge-common";
 
-$base-size: 22px;
-
 @mixin _structure() {
   .ui-badge-host {
     position: relative;
@@ -30,6 +28,8 @@ $base-size: 22px;
 @mixin _typography($typography-config) {
   .ui-badge {
     @include typography.apply-level($typography-config, "button");
+    line-height: badge-common.$base-size;
+    font-weight: 600;
     text-align: center;
   }
 }
