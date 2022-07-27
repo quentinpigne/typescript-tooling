@@ -4,11 +4,11 @@ import { ComponentPortal, Portal, TemplatePortal } from './portal';
 import { BasePortalOutlet } from './portal-outlet';
 
 @Directive({
-  selector: '[uiPortalOutlet]',
-  exportAs: 'uiPortalOutlet',
+  selector: '[ngPortalOutlet]',
+  exportAs: 'ngPortalOutlet',
 })
 export class PortalOutletDirective extends BasePortalOutlet {
-  @Input('uiPortalOutlet')
+  @Input('ngPortalOutlet')
   set portal(portal: Portal<unknown> | null | undefined | '') {
     if (portal) {
       this.detach();
