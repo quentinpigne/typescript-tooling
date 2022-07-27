@@ -10,10 +10,14 @@ export interface CheckboxControlValueAccessorAttr {
   _controlValueAccessorChangeFn: (value: boolean) => void;
 }
 
-export function mixinCheckboxControlValueAccessor<TBase extends Constructor<CanBeChecked & CanBeDisabled>>(
+type CanBeCheckedAndDisabled = CanBeChecked & CanBeDisabled;
+
+export type CheckboxControlValueAccessor = CheckboxControlValueAccessorAttr & ControlValueAccessor;
+
+export function mixinCheckboxControlValueAccessor<TBase extends Constructor<CanBeCheckedAndDisabled>>(
   Base: TBase,
-): TBase & Constructor<CheckboxControlValueAccessorAttr & ControlValueAccessor> {
-  return class CheckboxControlValueAccessorImpl extends Base implements ControlValueAccessor {
+): TBase & Constructor<CheckboxControlValueAccessor> {
+  return class CheckboxControlValueAccessorImpl extends Base implements CheckboxControlValueAccessor {
     _onTouched: () => void = () => {};
 
     _controlValueAccessorChangeFn: (value: boolean) => void = () => {};

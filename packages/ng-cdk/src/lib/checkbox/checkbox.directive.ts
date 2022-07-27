@@ -1,7 +1,8 @@
 import { ChangeDetectorRef, Directive, EventEmitter, Input, Output } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
 
+import { Constructor } from '@quentinpigne/ts-utils';
 import {
+  ClassWithChangeDetectorRef,
   getUniqueComponentId,
   mixinCheckboxControlValueAccessor,
   mixinChecked,
@@ -11,26 +12,16 @@ import {
   mixinValue,
 } from '@quentinpigne/ng-core';
 
-const _CheckboxBase = mixinCheckboxControlValueAccessor(
-  mixinChecked(
-    mixinDisabled(
-      mixinName(
-        mixinRequired(
-          mixinValue(
-            class {
-              constructor(public _changeDetectorRef: ChangeDetectorRef) {}
-            },
-          ),
-        ),
-      ),
-    ),
-  ),
+import { Checkbox } from './types';
+
+const _CheckboxBase: Constructor<Checkbox> = mixinCheckboxControlValueAccessor(
+  mixinChecked(mixinDisabled(mixinName(mixinRequired(mixinValue<string>()(ClassWithChangeDetectorRef))))),
 );
 
 @Directive({
   inputs: ['checked', 'disabled', 'name', 'required', 'value'],
 })
-export class CheckboxCdk extends _CheckboxBase implements ControlValueAccessor {
+export class CheckboxCdk extends _CheckboxBase implements Checkbox {
   protected _uniqueId: string = getUniqueComponentId('ui-checkbox');
 
   @Input() id: string = this._uniqueId;
@@ -46,7 +37,7 @@ export class CheckboxCdk extends _CheckboxBase implements ControlValueAccessor {
   }
 
   protected _emitChangeEvent() {
-    super._controlValueAccessorChangeFn(this.checked);
+    this._controlValueAccessorChangeFn(this.checked);
     this.change.emit(this.checked);
   }
 

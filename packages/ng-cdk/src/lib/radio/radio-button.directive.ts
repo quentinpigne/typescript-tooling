@@ -1,10 +1,9 @@
 import { ChangeDetectorRef, Directive, EventEmitter, Input, Output } from '@angular/core';
 
+import { Constructor } from '@quentinpigne/ts-utils';
 import {
-  CanBeDisabled,
-  CanBeRequired,
+  ClassWithChangeDetectorRef,
   getUniqueComponentId,
-  HasValue,
   mixinChecked,
   mixinDisabled,
   mixinName,
@@ -12,26 +11,16 @@ import {
   mixinValue,
 } from '@quentinpigne/ng-core';
 
-const _RadioButtonBase = mixinChecked(
-  mixinDisabled(
-    mixinName(
-      mixinRequired(
-        mixinValue(
-          class {
-            constructor(public _changeDetectorRef: ChangeDetectorRef) {}
-          },
-        ),
-      ),
-    ),
-  ),
+import { RadioButton, RadioButtonMixin, RadioGroup } from './types';
+
+const _RadioButtonBase: Constructor<RadioButtonMixin> = mixinChecked(
+  mixinDisabled(mixinName(mixinRequired(mixinValue()(ClassWithChangeDetectorRef)))),
 );
 
 @Directive({
   inputs: ['name'],
 })
-export abstract class RadioButtonCdk<
-  T extends CanBeDisabled & CanBeRequired & HasValue<unknown> & { selected: RadioButtonCdk<T> | null },
-> extends _RadioButtonBase {
+export abstract class RadioButtonCdk<T extends RadioGroup> extends _RadioButtonBase implements RadioButton {
   private _uniqueId: string = getUniqueComponentId('cdk-radio-button');
 
   @Input() id: string = this._uniqueId;
@@ -52,7 +41,7 @@ export abstract class RadioButtonCdk<
         if (newCheckedValue && !isSelected) {
           this._radioGroup.selected = this;
         } else if (!newCheckedValue && isSelected) {
-          this._radioGroup.selected = null;
+          this._radioGroup.selected = undefined;
         }
       }
     }
@@ -99,6 +88,6 @@ export abstract class RadioButtonCdk<
   }
 
   markForCheck(): void {
-    this._changeDetectorRef.markForCheck();
+    this._changeDetectorRef?.markForCheck();
   }
 }

@@ -11,9 +11,13 @@ export interface RadioControlValueAccessorAttr {
   _controlValueAccessorChangeFn: (value: unknown) => void;
 }
 
-export function mixinRadioControlValueAccessor<
-  TBase extends Constructor<CanBeDisabled & HasChangeDetectorRef & HasValue<unknown>>,
->(Base: TBase): TBase & Constructor<RadioControlValueAccessorAttr & ControlValueAccessor> {
+type HasChangeDetectorRefAndValueAndCanBeDisabled = CanBeDisabled & HasChangeDetectorRef & HasValue<unknown>;
+
+export type RadioControlValueAccessor = RadioControlValueAccessorAttr & ControlValueAccessor;
+
+export function mixinRadioControlValueAccessor<TBase extends Constructor<HasChangeDetectorRefAndValueAndCanBeDisabled>>(
+  Base: TBase,
+): TBase & Constructor<RadioControlValueAccessor> {
   return class RadioControlValueAccessorImpl extends Base implements ControlValueAccessor {
     _onTouched: () => void = () => {};
 

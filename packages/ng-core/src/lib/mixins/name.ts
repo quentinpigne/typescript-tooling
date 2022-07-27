@@ -1,7 +1,7 @@
 import { Constructor } from '@quentinpigne/ts-utils';
 
 export interface HasName {
-  name: string | undefined;
+  name?: string;
 }
 
 export function mixinName<TBase extends Constructor>(Base: TBase, initialName?: string): TBase & Constructor<HasName> {

@@ -1,38 +1,30 @@
 import { ChangeDetectorRef, Directive, EventEmitter, Input, Output, QueryList } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
 
+import { Constructor } from '@quentinpigne/ts-utils';
 import {
-  CanBeChecked,
+  ClassWithChangeDetectorRef,
   getUniqueComponentId,
-  HasName,
-  HasValue,
   mixinDisabled,
   mixinName,
   mixinRadioControlValueAccessor,
   mixinRequired,
+  mixinSelected,
   mixinValue,
 } from '@quentinpigne/ng-core';
 
-const _RadioGroupBase = mixinRadioControlValueAccessor(
+import { RadioButton, RadioGroup } from './types';
+
+const _RadioGroupBase: Constructor<RadioGroup> = mixinRadioControlValueAccessor(
   mixinDisabled(
     mixinName(
-      mixinRequired(
-        mixinValue(
-          class {
-            constructor(public _changeDetectorRef: ChangeDetectorRef) {}
-          },
-        ),
-      ),
+      mixinRequired(mixinSelected<RadioButton>()(mixinValue()(ClassWithChangeDetectorRef))),
       getUniqueComponentId('cdk-radio-group'),
     ),
   ),
 );
 
 @Directive()
-export abstract class RadioGroupCdk<T extends CanBeChecked & HasName & HasValue<unknown> & { markForCheck: () => void }>
-  extends _RadioGroupBase
-  implements ControlValueAccessor
-{
+export abstract class RadioGroupCdk<T extends RadioButton> extends _RadioGroupBase implements RadioGroup {
   protected _radios: QueryList<T> | undefined;
 
   @Input()
@@ -58,15 +50,16 @@ export abstract class RadioGroupCdk<T extends CanBeChecked & HasName & HasValue<
   }
 
   @Input()
-  get selected(): T | null {
-    return this._selected;
+  override get selected(): T | undefined {
+    return super.selected as T;
   }
-  set selected(selected: T | null) {
-    this._selected = selected;
-    this.value = selected ? selected.value : null;
-    this._checkSelectedRadioButton();
+  override set selected(selected: T | undefined) {
+    if (selected !== super.selected) {
+      super.selected = selected;
+      this.value = selected ? selected.value : null;
+      this._checkSelectedRadioButton();
+    }
   }
-  private _selected: T | null = null;
 
   @Input()
   override get disabled(): boolean {
@@ -110,8 +103,8 @@ export abstract class RadioGroupCdk<T extends CanBeChecked & HasName & HasValue<
   }
 
   private _checkSelectedRadioButton() {
-    if (this._selected && !this._selected.checked) {
-      this._selected.checked = true;
+    if (this.selected && !this.selected.checked) {
+      this.selected.checked = true;
     }
   }
 }
