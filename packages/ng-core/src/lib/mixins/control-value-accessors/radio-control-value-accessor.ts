@@ -2,16 +2,12 @@ import { ControlValueAccessor } from '@angular/forms';
 
 import { Constructor } from '@quentinpigne/ts-utils';
 
-import { CanBeDisabled } from './disabled';
-import { HasValue } from './value';
-import { HasChangeDetectorRef } from './utils';
+import { HasChangeDetectorRefAndValueAndCanBeDisabled } from '../types';
 
 export interface RadioControlValueAccessorAttr {
   _onTouched: () => void;
   _controlValueAccessorChangeFn: (value: unknown) => void;
 }
-
-type HasChangeDetectorRefAndValueAndCanBeDisabled = CanBeDisabled & HasChangeDetectorRef & HasValue<unknown>;
 
 export type RadioControlValueAccessor = RadioControlValueAccessorAttr & ControlValueAccessor;
 

@@ -1,6 +1,6 @@
 import { coerceBooleanValue, Constructor } from '@quentinpigne/ts-utils';
 
-import { HasChangeDetectorRef } from './utils';
+import { HasChangeDetectorRef } from '../types';
 
 export interface CanBeRequired {
   required: boolean;

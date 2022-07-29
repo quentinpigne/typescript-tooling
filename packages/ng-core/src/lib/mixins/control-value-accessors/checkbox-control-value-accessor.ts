@@ -2,15 +2,12 @@ import { ControlValueAccessor } from '@angular/forms';
 
 import { Constructor } from '@quentinpigne/ts-utils';
 
-import { CanBeChecked } from './checked';
-import { CanBeDisabled } from './disabled';
+import { CanBeCheckedAndDisabled } from '../types';
 
 export interface CheckboxControlValueAccessorAttr {
   _onTouched: () => void;
   _controlValueAccessorChangeFn: (value: boolean) => void;
 }
-
-type CanBeCheckedAndDisabled = CanBeChecked & CanBeDisabled;
 
 export type CheckboxControlValueAccessor = CheckboxControlValueAccessorAttr & ControlValueAccessor;
 
