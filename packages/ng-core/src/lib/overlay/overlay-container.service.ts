@@ -20,22 +20,16 @@ export class OverlayContainerService implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this._removeContainerElement();
+    this._containerElement?.remove();
   }
 
   private _createContainerElement(): void {
-    const CONTAINER_CLASS: string = 'ui-overlay-container';
+    const CONTAINER_CLASS: string = 'ng-overlay-container';
 
     const container: HTMLDivElement = this._document.createElement('div');
     container.classList.add(CONTAINER_CLASS);
 
     this._document.body.appendChild(container);
     this._containerElement = container;
-  }
-
-  private _removeContainerElement(): void {
-    if (this._containerElement) {
-      this._document.body.removeChild(this._containerElement);
-    }
   }
 }

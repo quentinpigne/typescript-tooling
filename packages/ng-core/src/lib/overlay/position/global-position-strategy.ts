@@ -2,7 +2,7 @@ import { OverlayRef } from '../overlay-ref';
 
 import { PositionStrategy } from './position-strategy';
 
-const globalHostClass: string = 'ui-global-overlay-host';
+const globalHostClass: string = 'ng-global-overlay-host';
 
 export class GlobalPositionStrategy implements PositionStrategy {
   private _overlayRef!: OverlayRef;

@@ -94,7 +94,7 @@ export class OverlayRef implements PortalOutlet {
 
   private _attachBackdrop() {
     this._backdropElement = this._document.createElement('div');
-    this._backdropElement.classList.add('ui-overlay-backdrop');
+    this._backdropElement.classList.add('ng-overlay-backdrop');
 
     this._hostElement.parentElement?.insertBefore(this._backdropElement, this._hostElement);
     this._backdropElement.addEventListener('click', this._backdropClickHandler);

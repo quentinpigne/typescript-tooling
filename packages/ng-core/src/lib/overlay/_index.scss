@@ -5,7 +5,7 @@ $overlay-backdrop-z-index: 1000;
 $overlay-backdrop-color: rgba(0, 0, 0, 0.32);
 
 @mixin overlay() {
-  .ui-overlay-container, .ui-global-overlay-host {
+  .ng-overlay-container, .ng-global-overlay-host {
     top: 0;
     left: 0;
     height: 100%;
@@ -13,7 +13,7 @@ $overlay-backdrop-color: rgba(0, 0, 0, 0.32);
 
     pointer-events: none;
 
-    .ui-overlay-container {
+    .ng-overlay-container {
       position: fixed;
       z-index: $overlay-container-z-index;
 
@@ -23,13 +23,13 @@ $overlay-backdrop-color: rgba(0, 0, 0, 0.32);
     }
   }
 
-  .ui-global-overlay-host {
+  .ng-global-overlay-host {
     display: flex;
     position: absolute;
     z-index: $overlay-host-z-index;
   }
 
-  .ui-overlay-backdrop {
+  .ng-overlay-backdrop {
     position: absolute;
     top: 0;
     bottom: 0;
