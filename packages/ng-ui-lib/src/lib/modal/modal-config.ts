@@ -1,4 +1,5 @@
-export class ModalConfig {
+export class ModalConfig<D = unknown> {
+  data?: D | null;
   width?: number | string;
   height?: number | string;
   minWidth?: number | string;

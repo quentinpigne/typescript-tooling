@@ -1,10 +1,18 @@
-import { ComponentRef, Injectable, Injector, OnDestroy, StaticProvider, Type } from '@angular/core';
+import { ComponentRef, Injectable, InjectionToken, Injector, OnDestroy, StaticProvider, Type } from '@angular/core';
 
-import { ComponentPortal, GlobalPositionStrategy, OverlayConfig, OverlayRef, OverlayService } from '@quentinpigne/ng-core';
+import {
+  ComponentPortal,
+  GlobalPositionStrategy,
+  OverlayConfig,
+  OverlayRef,
+  OverlayService,
+} from '@quentinpigne/ng-core';
 
 import { ModalRef } from './modal-ref';
 import { ModalConfig } from './modal-config';
 import { ModalContainerComponent } from './modal-container.component';
+
+export const UI_DIALOG_DATA = new InjectionToken<unknown>('UiDialogData');
 
 @Injectable({
   providedIn: 'root',
@@ -18,20 +26,20 @@ export class ModalService implements OnDestroy {
     this._openModal?.close();
   }
 
-  open<T, R>(componentType: Type<T>, config?: ModalConfig): ModalRef<T, R> {
+  open<T, D = unknown, R = unknown>(componentType: Type<T>, config?: ModalConfig<D>): ModalRef<T, R> {
     const overlayRef: OverlayRef = this._createOverlay(config);
     const modalContainer: ModalContainerComponent = this._attachModalContainer(overlayRef);
-    const modalRef: ModalRef<T, R> = this._attachModal<T, R>(overlayRef, modalContainer, componentType);
+    const modalRef: ModalRef<T, R> = this._attachModal(overlayRef, modalContainer, componentType, config);
     this._openModal = modalRef as ModalRef<unknown, unknown>;
     return modalRef;
   }
 
-  private _createOverlay(config?: ModalConfig): OverlayRef {
+  private _createOverlay<D = unknown>(config?: ModalConfig<D>): OverlayRef {
     const overlayConfig: OverlayConfig = this._createOverlayConfig(config);
     return this._overlayService.create(overlayConfig);
   }
 
-  private _createOverlayConfig(config?: ModalConfig): OverlayConfig {
+  private _createOverlayConfig<D = unknown>(config?: ModalConfig<D>): OverlayConfig {
     return {
       width: config?.width,
       height: config?.height,
@@ -50,13 +58,14 @@ export class ModalService implements OnDestroy {
     return modalContainerRef.instance;
   }
 
-  private _attachModal<T, R>(
+  private _attachModal<T, D = unknown, R = unknown>(
     overlayRef: OverlayRef,
     modalContainer: ModalContainerComponent,
     componentType: Type<T>,
+    config?: ModalConfig<D>,
   ): ModalRef<T, R> {
     const modalRef: ModalRef<T, R> = new ModalRef(overlayRef, modalContainer);
-    const injector: Injector = this._createInjector(modalRef);
+    const injector: Injector = this._createInjector(modalRef, config);
     const portal: ComponentPortal<T> = new ComponentPortal(componentType, undefined, injector);
     const modalComponentRef: ComponentRef<T> = modalContainer.attach(portal);
     modalRef.modalInstance = modalComponentRef.instance;
@@ -64,8 +73,11 @@ export class ModalService implements OnDestroy {
     return modalRef;
   }
 
-  private _createInjector<T, R>(modalRef: ModalRef<T, R>): Injector {
-    const providers: StaticProvider[] = [{ provide: ModalRef, useValue: modalRef }];
+  private _createInjector<T, D = unknown, R = unknown>(modalRef: ModalRef<T, R>, config?: ModalConfig<D>): Injector {
+    const providers: StaticProvider[] = [
+      { provide: UI_DIALOG_DATA, useValue: config?.data },
+      { provide: ModalRef, useValue: modalRef },
+    ];
     return Injector.create({ parent: this._injector, providers });
   }
 }

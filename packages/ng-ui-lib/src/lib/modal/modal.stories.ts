@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 
 import { ModalRef } from './modal-ref';
 import { ModalModule } from './modal.module';
-import { ModalService } from './modal.service';
+import { ModalService, UI_DIALOG_DATA } from './modal.service';
 
 interface ModalResult {
   result: string;
@@ -23,7 +23,11 @@ class ModalWrapperComponent {
   constructor(private readonly _modalService: ModalService) {}
 
   openModal() {
-    const modalRef: ModalRef<ModalComponent, ModalResult> = this._modalService.open(ModalComponent);
+    const modalRef: ModalRef<ModalComponent, ModalResult> = this._modalService.open(ModalComponent, {
+      data: {
+        label: 'Type a text',
+      },
+    });
     modalRef.afterClosed.subscribe((result?: ModalResult) => {
       this.response = result?.result || '';
     });
@@ -34,7 +38,7 @@ class ModalWrapperComponent {
   selector: 'ui-story-modal',
   template: `
     <div style="display: flex; gap: 10px;">
-      <label for="inputField">Type a text</label>
+      <label for="inputField">{{ data.label }}</label>
       <input id="inputField" type="text" [(ngModel)]="inputValue" />
       <button (click)="close()">Validate</button>
     </div>
@@ -43,7 +47,10 @@ class ModalWrapperComponent {
 class ModalComponent {
   inputValue: string = '';
 
-  constructor(private readonly modalRef: ModalRef<ModalComponent, ModalResult>) {}
+  constructor(
+    @Inject(UI_DIALOG_DATA) public data: { label: string },
+    private readonly modalRef: ModalRef<ModalComponent, ModalResult>,
+  ) {}
 
   close(): void {
     this.modalRef.close({ result: this.inputValue });
