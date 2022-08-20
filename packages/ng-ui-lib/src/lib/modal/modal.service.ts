@@ -48,7 +48,7 @@ export class ModalService implements OnDestroy {
       maxWidth: config?.maxWidth,
       maxHeight: config?.maxHeight,
       hasBackdrop: true,
-      positionStrategy: new GlobalPositionStrategy(),
+      positionStrategy: new GlobalPositionStrategy().centerHorizontally().centerVertically(),
     };
   }
 

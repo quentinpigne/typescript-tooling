@@ -19,32 +19,38 @@ export class GlobalPositionStrategy implements PositionStrategy {
     overlayRef.hostElement.classList.add(globalHostClass);
   }
 
-  top(offset?: string): void {
+  top(offset?: string): this {
     this._marginTop = offset;
     this._alignItems = 'flex-start';
+    return this;
   }
 
-  bottom(offset?: string): void {
+  bottom(offset?: string): this {
     this._marginBottom = offset;
     this._alignItems = 'flex-end';
+    return this;
   }
 
-  left(offset?: string): void {
+  left(offset?: string): this {
     this._marginLeft = offset;
     this._justifyContent = 'flex-start';
+    return this;
   }
 
-  right(offset?: string): void {
+  right(offset?: string): this {
     this._marginRight = offset;
     this._justifyContent = 'flex-end';
+    return this;
   }
 
-  centerHorizontally(): void {
+  centerHorizontally(): this {
     this._justifyContent = 'center';
+    return this;
   }
 
-  centerVertically(): void {
+  centerVertically(): this {
     this._alignItems = 'center';
+    return this;
   }
 
   apply(): void {

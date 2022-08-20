@@ -43,10 +43,6 @@ export class OverlayRef implements PortalOutlet {
     return this._overlayElement;
   }
 
-  get positionStrategy(): PositionStrategy | undefined {
-    return this._positionStrategy;
-  }
-
   get backdropClick(): Observable<MouseEvent> {
     return this._backdropClick.asObservable();
   }
@@ -79,6 +75,12 @@ export class OverlayRef implements PortalOutlet {
     this._document.body.removeEventListener('keyup', this._keyboardEventHandler);
     this._hostElement.remove();
     this._portalOutlet.detach();
+  }
+
+  updatePosition(): void {
+    if (this._positionStrategy) {
+      this._positionStrategy.apply();
+    }
   }
 
   private _updateElementSize(): void {

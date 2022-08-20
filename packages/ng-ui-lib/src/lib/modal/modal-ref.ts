@@ -1,6 +1,6 @@
 import { Observable, Subject } from 'rxjs';
 
-import { GlobalPositionStrategy, OverlayRef } from '@quentinpigne/ng-core';
+import { OverlayRef } from '@quentinpigne/ng-core';
 
 import { ModalContainerComponent } from './modal-container.component';
 
@@ -33,9 +33,6 @@ export class ModalRef<T, R> {
   }
 
   updatePosition(): void {
-    const positionStrategy: GlobalPositionStrategy = this._overlayRef.positionStrategy as GlobalPositionStrategy;
-    positionStrategy.centerHorizontally();
-    positionStrategy.centerVertically();
-    positionStrategy.apply();
+    this._overlayRef.updatePosition();
   }
 }
