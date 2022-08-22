@@ -9,3 +9,4 @@ export * from './lib/progress-bar';
 export * from './lib/progress-spinner';
 export * from './lib/radio';
 export * from './lib/tabs';
+export * from './lib/tooltip';
