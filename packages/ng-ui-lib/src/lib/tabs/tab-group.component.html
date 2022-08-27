@@ -1,4 +1,4 @@
-<div class="ui-tab-group-header">
+<div class="ui-tab-header">
   <div class="ui-tab-label"
     *ngFor="let tab of tabs; let i = index"
     [class.ui-tab-label-selected]="selectedIndex === i"
@@ -6,6 +6,6 @@
     {{ tab.label }}
   </div>
 </div>
-<div class="ui-tab-group-body">
+<div class="ui-tab-body">
   <ng-container [ngPortalOutlet]="selectedTab.contentPortal"></ng-container>
 </div>

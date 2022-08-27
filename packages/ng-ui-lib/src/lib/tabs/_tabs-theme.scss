@@ -2,7 +2,7 @@
 @use '../theming/typography/typography';
 
 @mixin _color($color-config) {
-  .ui-tab-group-header {
+  .ui-tab-header {
     color: map.get($color-config, primary-color);
   }
 }

@@ -15,7 +15,7 @@ export default {
 const Template: Story<TabGroupComponent> = (args) => ({
   props: args,
   template: `
-    <ui-tab-group selectedIndex="2">
+    <ui-tab-group [selectedIndex]="selectedIndex">
       <ui-tab label="Tab 1">
         Ceci est le contenu de la tab 1
       </ui-tab>
@@ -30,4 +30,6 @@ const Template: Story<TabGroupComponent> = (args) => ({
 });
 
 export const Principal = Template.bind({});
-Principal.args = {};
+Principal.args = {
+  selectedIndex: 2,
+};

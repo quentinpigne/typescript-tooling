@@ -10,12 +10,13 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
+import { NG_TEMPLATED_CONTENT } from '@quentinpigne/ng-cdk';
 import { TemplatePortal } from '@quentinpigne/ng-core';
 
 @Component({
   selector: 'ui-tab',
   exportAs: 'uiTab',
-  template: `<ng-template><ng-content></ng-content></ng-template>`,
+  template: NG_TEMPLATED_CONTENT,
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

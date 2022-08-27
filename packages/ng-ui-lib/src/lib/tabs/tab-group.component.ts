@@ -1,5 +1,5 @@
 import {
-  AfterContentInit,
+  AfterContentChecked,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
@@ -20,20 +20,19 @@ import { TabComponent } from './tab.component';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TabGroupComponent implements AfterContentInit {
+export class TabGroupComponent implements AfterContentChecked {
   @HostBinding('class') cssClass: string = 'ui-tab-group';
+
+  _indexToSelect: number = 0;
 
   @Input()
   get selectedIndex(): number {
     return this._selectedIndex;
   }
   set selectedIndex(newIndex: number) {
-    if (this._selectedIndex !== newIndex) {
-      this._selectedIndex = newIndex;
-      this.changeTab(newIndex);
-    }
+    this._indexToSelect = newIndex;
   }
-  private _selectedIndex: number = 0;
+  private _selectedIndex!: number;
 
   selectedTab!: TabComponent;
 
@@ -41,14 +40,15 @@ export class TabGroupComponent implements AfterContentInit {
 
   constructor(private readonly _changeDetectorRef: ChangeDetectorRef) {}
 
-  ngAfterContentInit(): void {
-    this.changeTab(this._selectedIndex);
+  ngAfterContentChecked(): void {
+    this.changeTab(this._indexToSelect);
     this._changeDetectorRef.markForCheck();
   }
 
   changeTab(index: number): void {
     const selectedTab: TabComponent | undefined = this.tabs?.get(index);
     if (selectedTab) {
+      if (this._selectedIndex != index) this._selectedIndex = index;
       this.selectedTab = selectedTab;
     }
   }
