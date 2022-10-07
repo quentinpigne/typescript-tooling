@@ -1,4 +1,4 @@
-import { isObject } from '@quentinpigne/ts-utils';
+import { isObject } from '@quentinpigne/ts-utils/object';
 
 interface FSModuleMock {
   __setDirectoryStructure: (newDirectoryStructure: Record<string, unknown>) => void;

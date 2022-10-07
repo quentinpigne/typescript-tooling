@@ -1,4 +1,4 @@
-import { Constructor } from '@quentinpigne/ts-utils';
+import { Constructor } from '@quentinpigne/ts-utils/mixins';
 
 export interface HasName {
   name?: string;

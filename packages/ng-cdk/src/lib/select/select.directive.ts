@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Directive, EventEmitter, Input, Output } from '@angular/core';
 
-import { Constructor } from '@quentinpigne/ts-utils';
+import { Constructor } from '@quentinpigne/ts-utils/mixins';
 import {
   ClassWithChangeDetectorRef,
   mixinDisabled,

@@ -1,6 +1,6 @@
 import { ControlValueAccessor } from '@angular/forms';
 
-import { Constructor } from '@quentinpigne/ts-utils';
+import { Constructor } from '@quentinpigne/ts-utils/mixins';
 
 import { HasChangeDetectorRefAndValueAndCanBeDisabled } from '../types';
 

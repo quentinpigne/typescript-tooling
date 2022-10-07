@@ -2,7 +2,7 @@ import { ComponentRef, NgZone } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { coerceCssPixelValue } from '@quentinpigne/ts-utils';
+import { coerceCssPixelValue } from '@quentinpigne/ts-utils/coercion';
 
 import { ComponentPortal } from '../portal/portal';
 import { PortalOutlet } from '../portal/portal-outlet';

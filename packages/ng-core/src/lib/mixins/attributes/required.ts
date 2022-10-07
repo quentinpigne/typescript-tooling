@@ -1,4 +1,5 @@
-import { coerceBooleanValue, Constructor } from '@quentinpigne/ts-utils';
+import { coerceBooleanValue } from '@quentinpigne/ts-utils/coercion';
+import { Constructor } from '@quentinpigne/ts-utils/mixins';
 
 import { HasChangeDetectorRef } from '../types';
 
