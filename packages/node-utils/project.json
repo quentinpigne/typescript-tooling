@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "packages/node-utils/src",
+  "sourceRoot": "packages/node-utils",
   "projectType": "library",
   "targets": {
     "build": {
@@ -10,7 +10,7 @@
         "outputPath": "dist/packages/node-utils",
         "tsConfig": "packages/node-utils/tsconfig.lib.json",
         "packageJson": "packages/node-utils/package.json",
-        "main": "packages/node-utils/src/index.ts",
+        "main": "packages/node-utils/index.ts",
         "assets": ["packages/node-utils/*.md"]
       }
     },
