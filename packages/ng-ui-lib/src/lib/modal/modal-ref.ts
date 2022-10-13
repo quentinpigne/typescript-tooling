@@ -1,6 +1,6 @@
 import { Observable, Subject } from 'rxjs';
 
-import { OverlayRef } from '@quentinpigne/ng-core';
+import { OverlayRef } from '@quentinpigne/ng-core/overlay';
 
 import { ModalContainerComponent } from './modal-container.component';
 

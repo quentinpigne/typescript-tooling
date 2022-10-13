@@ -8,7 +8,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { BasePortalOutlet, ComponentPortal, PortalOutletDirective, TemplatePortal } from '@quentinpigne/ng-core';
+import { BasePortalOutlet, ComponentPortal, PortalOutletDirective, TemplatePortal } from '@quentinpigne/ng-core/portal';
 
 @Component({
   selector: 'ui-modal-container',

@@ -7,7 +7,7 @@ import {
   HasSelected,
   HasValue,
   RadioControlValueAccessor,
-} from '@quentinpigne/ng-core';
+} from '@quentinpigne/ng-core/mixins';
 
 export type RadioButtonMixin = CanBeChecked &
   CanBeDisabled &

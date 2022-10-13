@@ -5,7 +5,7 @@ import {
   HasSelected,
   HasValue,
   SelectControlValueAccessor,
-} from '@quentinpigne/ng-core';
+} from '@quentinpigne/ng-core/mixins';
 
 export type Option = CanBeDisabled & HasChangeDetectorRef & HasValue<unknown> & HasSelected<boolean>;
 

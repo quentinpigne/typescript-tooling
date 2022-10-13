@@ -1,7 +1,7 @@
 import { ApplicationRef, ComponentFactoryResolver, Inject, Injectable, Injector, NgZone } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-import { DomPortalOutlet } from '../portal/dom-portal-outlet';
+import { DomPortalOutlet } from '@quentinpigne/ng-core/portal';
 
 import { OverlayRef } from './overlay-ref';
 import { OverlayContainerService } from './overlay-container.service';

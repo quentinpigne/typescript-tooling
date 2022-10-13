@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Renderer2 } from '@angular/core';
 
 import { Constructor } from '@quentinpigne/ts-utils/mixins';
-import { EmptyClass, HasContent, mixinContent } from '@quentinpigne/ng-core';
+import { EmptyClass, HasContent, mixinContent } from '@quentinpigne/ng-core/mixins';
 
 import { Badge, BadgeContent, BadgePosition } from './types';
 

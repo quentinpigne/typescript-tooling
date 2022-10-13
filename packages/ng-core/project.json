@@ -1,7 +1,7 @@
 {
   "projectType": "library",
-  "sourceRoot": "packages/ng-core/src",
-  "prefix": "ui",
+  "sourceRoot": "packages/ng-core",
+  "prefix": "ng",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",

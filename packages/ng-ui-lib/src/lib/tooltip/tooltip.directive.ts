@@ -1,14 +1,9 @@
-import { ComponentRef, Directive, ElementRef, Input, NgZone, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import { ComponentRef, Directive, ElementRef, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import {
-  ComponentPortal,
-  listenToTriggers,
-  OverlayRef,
-  OverlayService,
-  RelativePosition,
-  RelativePositionStrategy,
-} from '@quentinpigne/ng-core';
+import { ComponentPortal } from '@quentinpigne/ng-core/portal';
+import { listenToTriggers } from '@quentinpigne/ng-core/triggers';
+import { OverlayRef, OverlayService, RelativePosition, RelativePositionStrategy } from '@quentinpigne/ng-core/overlay';
 
 import { TooltipComponent } from './tooltip.component';
 

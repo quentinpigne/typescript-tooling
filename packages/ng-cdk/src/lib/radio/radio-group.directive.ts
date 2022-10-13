@@ -3,14 +3,14 @@ import { ChangeDetectorRef, Directive, EventEmitter, Input, Output, QueryList } 
 import { Constructor } from '@quentinpigne/ts-utils/mixins';
 import {
   ClassWithChangeDetectorRef,
-  getUniqueComponentId,
   mixinDisabled,
   mixinName,
   mixinRadioControlValueAccessor,
   mixinRequired,
   mixinSelected,
   mixinValue,
-} from '@quentinpigne/ng-core';
+} from '@quentinpigne/ng-core/mixins';
+import { getUniqueComponentId } from '@quentinpigne/ng-core/utils';
 
 import { RadioButton, RadioGroup } from './types';
 

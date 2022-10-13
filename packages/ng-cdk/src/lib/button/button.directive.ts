@@ -1,6 +1,6 @@
 import { Directive } from '@angular/core';
 
-import { CanBeDisabled, mixinDisabled } from '@quentinpigne/ng-core';
+import { CanBeDisabled, mixinDisabled } from '@quentinpigne/ng-core/mixins';
 
 const _ButtonBase = mixinDisabled(class {});
 

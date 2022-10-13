@@ -1,4 +1,4 @@
-import { HasContent } from '@quentinpigne/ng-core';
+import { HasContent } from '@quentinpigne/ng-core/mixins';
 
 export type BadgeContent = string | number | undefined | null;
 

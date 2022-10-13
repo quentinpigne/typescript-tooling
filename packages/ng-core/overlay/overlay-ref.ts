@@ -3,10 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { coerceCssPixelValue } from '@quentinpigne/ts-utils/coercion';
-
-import { ComponentPortal } from '../portal/portal';
-import { PortalOutlet } from '../portal/portal-outlet';
-import { DomPortalOutlet } from '../portal/dom-portal-outlet';
+import { ComponentPortal, DomPortalOutlet, PortalOutlet } from '@quentinpigne/ng-core/portal';
 
 import { OverlayConfig } from './overlay-config';
 import { PositionStrategy } from './position/position-strategy';

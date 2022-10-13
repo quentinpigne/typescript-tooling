@@ -1,12 +1,7 @@
 import { ComponentRef, Injectable, InjectionToken, Injector, OnDestroy, StaticProvider, Type } from '@angular/core';
 
-import {
-  ComponentPortal,
-  GlobalPositionStrategy,
-  OverlayConfig,
-  OverlayRef,
-  OverlayService,
-} from '@quentinpigne/ng-core';
+import { ComponentPortal } from '@quentinpigne/ng-core/portal';
+import { GlobalPositionStrategy, OverlayConfig, OverlayRef, OverlayService } from '@quentinpigne/ng-core/overlay';
 
 import { ModalRef } from './modal-ref';
 import { ModalConfig } from './modal-config';

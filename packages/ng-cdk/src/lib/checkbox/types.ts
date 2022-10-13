@@ -5,7 +5,7 @@ import {
   CheckboxControlValueAccessor,
   HasName,
   HasValue,
-} from '@quentinpigne/ng-core';
+} from '@quentinpigne/ng-core/mixins';
 
 export type Checkbox = CheckboxControlValueAccessor &
   CanBeChecked &

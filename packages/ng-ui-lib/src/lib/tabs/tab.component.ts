@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 
 import { NG_TEMPLATED_CONTENT } from '@quentinpigne/ng-cdk';
-import { TemplatePortal } from '@quentinpigne/ng-core';
+import { TemplatePortal } from '@quentinpigne/ng-core/portal';
 
 @Component({
   selector: 'ui-tab',

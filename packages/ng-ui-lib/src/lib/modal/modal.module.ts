@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PortalModule } from '@quentinpigne/ng-core';
+import { PortalModule } from '@quentinpigne/ng-core/portal';
 
 import { ModalContainerComponent } from './modal-container.component';
 

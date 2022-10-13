@@ -7,7 +7,7 @@ import {
   mixinRequired,
   mixinSelectControlValueAccessor,
   mixinValue,
-} from '@quentinpigne/ng-core';
+} from '@quentinpigne/ng-core/mixins';
 
 import { Select } from './types';
 

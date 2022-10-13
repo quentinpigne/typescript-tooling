@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Directive, Input, OnInit } from '@angular/core';
 
 import { Constructor } from '@quentinpigne/ts-utils/mixins';
-import { ClassWithChangeDetectorRef, mixinDisabled, mixinSelected, mixinValue } from '@quentinpigne/ng-core';
+import { ClassWithChangeDetectorRef, mixinDisabled, mixinSelected, mixinValue } from '@quentinpigne/ng-core/mixins';
 
 import { Option, Select } from './types';
 
