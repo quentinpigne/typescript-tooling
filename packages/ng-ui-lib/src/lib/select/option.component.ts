@@ -11,7 +11,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { Option, OptionCdk } from '@quentinpigne/ng-cdk';
+import { Option, OptionCdk } from '@quentinpigne/ng-cdk/select';
 
 import { SelectComponent, UI_SELECT } from './select.component';
 

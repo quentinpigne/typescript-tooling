@@ -15,7 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@quentinpigne/ng-cdk": ["packages/ng-cdk/src/index.ts"],
+      "@quentinpigne/ng-cdk/*": ["packages/ng-cdk/*"],
       "@quentinpigne/ng-core/*": ["packages/ng-core/*"],
       "@quentinpigne/ng-ui-lib": ["packages/ng-ui-lib/src/index.ts"],
       "@quentinpigne/node-utils/*": ["packages/node-utils/*"],

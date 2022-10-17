@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from '@angular/core';
 
-import { FormFieldCdk } from '@quentinpigne/ng-cdk';
+import { FormFieldCdk } from '@quentinpigne/ng-cdk/form-field';
 
 @Component({
   selector: 'ui-form-field',

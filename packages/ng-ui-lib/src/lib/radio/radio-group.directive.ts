@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { RadioGroupCdk } from '@quentinpigne/ng-cdk';
+import { RadioGroupCdk } from '@quentinpigne/ng-cdk/radio';
 
 import { RadioButtonComponent } from './radio-button.component';
 

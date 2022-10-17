@@ -9,7 +9,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { RadioButtonCdk } from '@quentinpigne/ng-cdk';
+import { RadioButtonCdk } from '@quentinpigne/ng-cdk/radio';
 
 import { RadioGroupDirective, UI_RADIO_GROUP } from './radio-group.directive';
 

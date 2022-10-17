@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { PanelModule } from '@quentinpigne/ng-cdk';
+import { PanelModule } from '@quentinpigne/ng-cdk/panel';
 
 import { CardComponent } from './card.component';
 import { CardContentDirective } from './card-content/card-content.directive';

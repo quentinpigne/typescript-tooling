@@ -1,7 +1,7 @@
 {
   "projectType": "library",
-  "sourceRoot": "packages/ng-cdk/src",
-  "prefix": "ui",
+  "sourceRoot": "packages/ng-cdk",
+  "prefix": "cdk",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",

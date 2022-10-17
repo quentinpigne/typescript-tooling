@@ -12,7 +12,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { Select, SelectCdk } from '@quentinpigne/ng-cdk';
+import { Select, SelectCdk } from '@quentinpigne/ng-cdk/select';
 
 export const UI_SELECT = new InjectionToken<SelectComponent>('SelectComponent');
 

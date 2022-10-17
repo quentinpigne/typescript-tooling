@@ -1,7 +1,7 @@
 @use "sass:map";
 @use "sass:math";
 @use "../theming/typography/typography";
-@use "packages/ng-cdk/src/lib/badge/badge-common";
+@use "packages/ng-cdk/badge/badge-common";
 
 @mixin _structure() {
   .ui-badge-host {

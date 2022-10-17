@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, forwardRef, HostBinding, ViewEncapsulation } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { CheckboxCdk } from '@quentinpigne/ng-cdk';
+import { CheckboxCdk } from '@quentinpigne/ng-cdk/checkbox';
 
 const UI_CHECKBOX_VALUE_ACCESSOR_PROVIDER = {
   provide: NG_VALUE_ACCESSOR,

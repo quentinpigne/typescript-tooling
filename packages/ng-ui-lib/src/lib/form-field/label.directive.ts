@@ -1,6 +1,6 @@
 import { Directive, HostBinding } from '@angular/core';
 
-import { LabelCdk } from '@quentinpigne/ng-cdk';
+import { LabelCdk } from '@quentinpigne/ng-cdk/form-field';
 
 @Directive({
   // eslint-disable-next-line @angular-eslint/directive-selector

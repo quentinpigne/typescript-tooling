@@ -1,6 +1,6 @@
 import { Directive, HostBinding, OnInit } from '@angular/core';
 
-import { BadgeCdk } from '@quentinpigne/ng-cdk';
+import { BadgeCdk } from '@quentinpigne/ng-cdk/badge';
 
 const BADGE_CLASS: string = 'ui-badge';
 

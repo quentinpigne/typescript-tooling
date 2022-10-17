@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from '@angular/core';
 
-import { BadgeCdk } from '@quentinpigne/ng-cdk';
+import { BadgeCdk } from '@quentinpigne/ng-cdk/badge';
 
 @Component({
   selector: 'ui-badge',

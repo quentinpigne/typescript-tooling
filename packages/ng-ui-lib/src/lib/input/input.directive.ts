@@ -1,6 +1,6 @@
 import { Directive, HostBinding } from '@angular/core';
 
-import { InputCdk } from '@quentinpigne/ng-cdk';
+import { InputCdk } from '@quentinpigne/ng-cdk/input';
 
 @Directive({
   selector: 'input[uiInput]',
