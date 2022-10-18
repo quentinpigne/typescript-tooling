@@ -1,6 +1,6 @@
 {
   "projectType": "library",
-  "sourceRoot": "packages/ng-ui-lib/src",
+  "sourceRoot": "packages/ng-ui-lib",
   "prefix": "ui",
   "targets": {
     "build": {
@@ -40,7 +40,7 @@
         "configDir": "packages/ng-ui-lib/.storybook",
         "browserTarget": "ng-ui-lib:build-storybook",
         "compodoc": false,
-        "styles": ["packages/ng-ui-lib/src/lib/theming/themes/base-theme.scss"]
+        "styles": ["packages/ng-ui-lib/theming/themes/base-theme.scss"]
       },
       "configurations": {
         "ci": {
@@ -56,7 +56,7 @@
         "configDir": "packages/ng-ui-lib/.storybook",
         "browserTarget": "ng-ui-lib:build-storybook",
         "compodoc": false,
-        "styles": ["packages/ng-ui-lib/src/lib/theming/themes/base-theme.scss"]
+        "styles": ["packages/ng-ui-lib/theming/themes/base-theme.scss"]
       },
       "configurations": {
         "ci": {
