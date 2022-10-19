@@ -1,1 +1,1 @@
-export * from './triggers';
+export * from './public-api';

@@ -3,5 +3,8 @@
   "dest": "../../dist/packages/ng-core",
   "lib": {
     "entryFile": "./index.ts"
-  }
+  },
+  "assets": [
+    "./**/*.scss"
+  ]
 }
