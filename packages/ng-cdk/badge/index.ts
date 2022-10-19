@@ -1,2 +1,1 @@
-export * from './badge.directive';
-export * from './types';
+export * from './public-api';

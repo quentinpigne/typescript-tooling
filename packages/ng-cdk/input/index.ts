@@ -1,1 +1,1 @@
-export * from './input.directive';
+export * from './public-api';

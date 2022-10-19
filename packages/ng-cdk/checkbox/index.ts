@@ -1,2 +1,1 @@
-export * from './checkbox.directive';
-export * from './types';
+export * from './public-api';
