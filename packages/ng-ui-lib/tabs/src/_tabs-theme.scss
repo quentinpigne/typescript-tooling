@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use '../theming/typography/typography';
+@use '../../theming/typography/typography';
 
 @mixin _color($color-config) {
   .ui-tab-header {

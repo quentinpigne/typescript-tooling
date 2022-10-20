@@ -1,3 +1,1 @@
-export * from './radio.module';
-export * from './radio-button.component';
-export * from './radio-group.directive';
+export * from './public-api';

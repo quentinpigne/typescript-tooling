@@ -1,36 +1,20 @@
 @use "sass:map";
-@use "sass:math";
-@use "../theming/typography/typography";
-@use "packages/ng-cdk/badge/src/badge-common";
-
-@mixin _structure() {
-  .ui-badge-host {
-    position: relative;
-  }
-
-  .ui-badge {
-    @include badge-common.base-size();
-
-    position: absolute;
-    border-radius: 50%;
-  }
-
-  @include badge-common.position("ui-badge")
-}
+@use "../../theming/typography/typography";
 
 @mixin _color($color-config) {
-  .ui-badge {
+  .ui-button {
     background-color: map.get($color-config, primary-color);
     color: map.get($color-config, text-color);
+
+    &:disabled {
+      background-color: map.get($color-config, disabled-color);
+    }
   }
 }
 
 @mixin _typography($typography-config) {
-  .ui-badge {
+  .ui-button {
     @include typography.apply-level($typography-config, "button");
-    line-height: badge-common.$base-size;
-    font-weight: 600;
-    text-align: center;
   }
 }
 
@@ -38,7 +22,6 @@
   $color-config: map.get($theme, color-config);
   $typography-config: map.get($theme, typography-config);
 
-  @include _structure();
   @include _color($color-config);
   @include _typography($typography-config);
 }

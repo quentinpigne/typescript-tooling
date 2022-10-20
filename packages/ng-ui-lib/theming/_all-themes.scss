@@ -1,9 +1,9 @@
-@use "../badge/badge-theme";
-@use "../button/button-theme";
-@use "../card/card-theme";
-@use "../progress-bar/progress-bar-theme";
-@use "../progress-spinner/progress-spinner-theme";
-@use "../tabs/tabs-theme";
+@use "../badge/src/badge-theme";
+@use "../button/src/button-theme";
+@use "../card/src/card-theme";
+@use "../progress-bar/src/progress-bar-theme";
+@use "../progress-spinner/src/progress-spinner-theme";
+@use "../tabs/src/tabs-theme";
 
 @mixin all-component-themes($theme) {
   @include badge-theme.theme($theme);

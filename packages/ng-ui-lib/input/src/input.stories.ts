@@ -1,7 +1,8 @@
 import { Story, Meta, moduleMetadata } from '@storybook/angular';
 
+import { FormFieldModule } from '@quentinpigne/ng-ui-lib/form-field';
+
 import { InputDirective } from './input.directive';
-import { FormFieldModule } from '../form-field/form-field.module';
 
 export default {
   title: 'Forms/Input',
