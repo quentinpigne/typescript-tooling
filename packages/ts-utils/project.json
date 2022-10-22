@@ -14,7 +14,7 @@
       }
     },
     "publish": {
-      "executor": "@nrwl/workspace:run-commands",
+      "executor": "nx:run-commands",
       "options": {
         "command": "node tools/scripts/publish.mjs ts-core {args.ver} {args.tag}"
       },
@@ -34,7 +34,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/packages/ts-utils"],
+      "outputs": ["{workspaceRoot}/coverage/packages/ts-utils"],
       "options": {
         "jestConfig": "packages/ts-utils/jest.config.ts",
         "passWithNoTests": true
