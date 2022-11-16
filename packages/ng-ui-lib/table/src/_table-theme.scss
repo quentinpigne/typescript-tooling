@@ -2,22 +2,11 @@
 @use "../../theming/typography/typography";
 
 @mixin _color($color-config) {
-  .ui-progress-bar {
-    background-color: #7c7c7c;
-
-    .ui-progress-bar-value {
-      background-color: map.get($color-config, primary-color);
-    }
-
-    .ui-progress-bar-label {
-      color: map.get($color-config, text-color);
-    }
-  }
 }
 
 @mixin _typography($typography-config) {
-  .ui-progress-bar-label {
-    @include typography.apply-level($typography-config, "label");
+  .ui-table {
+    @include typography.apply-level($typography-config, "body");
   }
 }
 

@@ -40,7 +40,9 @@
   $h4: define-typography-level(14px),
   $h5: define-typography-level(10px),
   $body: define-typography-level(12px, $line-height: 1.5),
-  $button: define-typography-level(12px)
+  $button: define-typography-level(12px),
+  $label: define-typography-level(12px, $font-weight: 600),
+  $tooltip: define-typography-level(0.7em)
 ) {
   @return (
     h1: $h1,
@@ -49,7 +51,9 @@
     h4: $h4,
     h5: $h5,
     body: $body,
-    button: $button
+    button: $button,
+    label: $label,
+    tooltip: $tooltip
   );
 }
 

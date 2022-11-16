@@ -27,9 +27,8 @@
 
 @mixin _typography($typography-config) {
   .ui-badge {
-    @include typography.apply-level($typography-config, "button");
+    @include typography.apply-level($typography-config, "label");
     line-height: badge-common.$base-size;
-    font-weight: 600;
     text-align: center;
   }
 }
