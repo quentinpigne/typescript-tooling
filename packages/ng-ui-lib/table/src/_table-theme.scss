@@ -2,6 +2,11 @@
 @use "../../theming/typography/typography";
 
 @mixin _color($color-config) {
+  .ui-table-body {
+    tr:nth-child(even) {
+      background-color: lightgray;
+    }
+  }
 }
 
 @mixin _typography($typography-config) {

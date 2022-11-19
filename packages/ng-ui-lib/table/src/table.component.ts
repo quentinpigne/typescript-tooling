@@ -10,7 +10,7 @@ import { Column } from './types/column';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TableComponent<DataType> {
+export class TableComponent<DataType extends Record<string, unknown>> {
   @HostBinding('class') cssClass: string = 'ui-table';
 
   @Input() columns!: Array<Column>;

@@ -1,0 +1,10 @@
+.ui-table-body {
+  .cell-content-container {
+    display: flex;
+    overflow: hidden;
+  }
+
+  .cell-content {
+    min-width: 0;
+  }
+}

@@ -1,3 +1,5 @@
 <tr>
-  <th *ngFor="let column of columns">{{ column.columnName }}</th>
+  <th *ngFor="let column of columns">
+    <span class="cell-content">{{ column.columnName }}</span>
+  </th>
 </tr>

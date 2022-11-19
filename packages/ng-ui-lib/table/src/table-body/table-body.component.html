@@ -1,3 +1,7 @@
 <tr *ngFor="let row of data">
-  <td *ngFor="let column of columns">{{ row[column.attributeName] }}</td>
+  <td *ngFor="let column of columns">
+    <div class="cell-content-container">
+      <span class="cell-content">{{ row[column.attributeName] }}</span>
+    </div>
+  </td>
 </tr>

@@ -1,0 +1,23 @@
+.ui-table {
+  table {
+    width: 100%;
+    line-height: 1.71429rem;
+    table-layout: fixed;
+    border: none;
+    border-collapse: collapse;
+
+    th {
+      max-width: 100%;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .cell-content {
+      padding: 8px;
+      overflow: hidden;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      text-overflow: ellipsis;
+    }
+  }
+}

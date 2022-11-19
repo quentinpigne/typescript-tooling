@@ -1,0 +1,13 @@
+.ui-table-head {
+  tr {
+    border-bottom: 1px solid black;
+  }
+
+  th {
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    white-space: nowrap;
+  }
+}
