@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 
 import { PortalOutlet } from './portal-outlet';
+import { NoPortalAttachedError, NullPortalOutletError, PortalAlreadyAttachedError } from './portal-errors';
 
 export abstract class Portal<T> {
   private _attachedOutlet: PortalOutlet | null = null;
@@ -18,6 +19,14 @@ export abstract class Portal<T> {
   }
 
   attach(host: PortalOutlet): T {
+    if (host === null) {
+      throw NullPortalOutletError;
+    }
+
+    if (host.hasAttached()) {
+      throw PortalAlreadyAttachedError;
+    }
+
     this._attachedOutlet = host;
     return <T>host.attach(this);
   }
@@ -27,6 +36,8 @@ export abstract class Portal<T> {
     if (host !== null) {
       this._attachedOutlet = null;
       host.detach();
+    } else {
+      throw NoPortalAttachedError;
     }
   }
 }

@@ -74,6 +74,10 @@ export class OverlayRef implements PortalOutlet {
     this._portalOutlet.detach();
   }
 
+  hasAttached(): boolean {
+    return this._portalOutlet.hasAttached();
+  }
+
   updatePosition(): void {
     if (this._positionStrategy) {
       this._positionStrategy.apply();
