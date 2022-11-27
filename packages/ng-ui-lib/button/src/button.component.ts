@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, ViewEncapsulation } from '@angular/core';
 
 import { ButtonCdk } from '@quentinpigne/ng-cdk/button';
 
@@ -10,6 +10,8 @@ import { ButtonCdk } from '@quentinpigne/ng-cdk/button';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ButtonComponent extends ButtonCdk {
-  @HostBinding('class') cssClass: string = 'ui-button';
+export class ButtonComponent extends ButtonCdk('ui-button') {
+  constructor(changeDetectorRef: ChangeDetectorRef, elementRef: ElementRef) {
+    super(changeDetectorRef, elementRef);
+  }
 }

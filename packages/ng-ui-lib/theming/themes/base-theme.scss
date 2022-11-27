@@ -2,11 +2,13 @@
 
 // Define colors for the theme
 $primary-color: #6200EE;
+$warning-color: #f69e11;
 $disabled-color: rgba(128, 128, 128, 0.8);
 $text-color: white;
 
 $color-config: (
   primary-color: $primary-color,
+  warning-color: $warning-color,
   disabled-color: $disabled-color,
   text-color: $text-color
 );

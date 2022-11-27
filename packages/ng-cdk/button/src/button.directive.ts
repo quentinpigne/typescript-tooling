@@ -1,13 +1,26 @@
 import { Directive } from '@angular/core';
 
-import { CanBeDisabled, mixinDisabled } from '@quentinpigne/ng-core/mixins';
+import {
+  ClassWithChangeDetectorRefAndElementRef,
+  mixinColor,
+  mixinCssClass,
+  mixinDisabled,
+} from '@quentinpigne/ng-core/mixins';
+import { Constructor } from '@quentinpigne/ts-utils/mixins';
 
-const _ButtonBase = mixinDisabled(class {});
+import { Button } from './types';
 
-@Directive({
-  inputs: ['disabled'],
-  host: {
-    '[attr.disabled]': 'disabled || null',
-  },
-})
-export class ButtonCdk extends _ButtonBase implements CanBeDisabled {}
+const _ButtonBase = (cssClass: string): Constructor<Button> =>
+  mixinColor(mixinDisabled(mixinCssClass(ClassWithChangeDetectorRefAndElementRef, cssClass)), 'primary');
+
+export function ButtonCdk(cssClass: string): Constructor<Button> {
+  @Directive({
+    inputs: ['color', 'disabled'],
+    host: {
+      '[attr.disabled]': 'disabled || null',
+    },
+  })
+  class _ButtonCdk extends _ButtonBase(cssClass) implements Button {}
+
+  return _ButtonCdk;
+}

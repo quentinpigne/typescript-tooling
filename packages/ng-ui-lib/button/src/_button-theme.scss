@@ -3,11 +3,18 @@
 
 @mixin _color($color-config) {
   .ui-button {
-    background-color: map.get($color-config, primary-color);
     color: map.get($color-config, text-color);
 
     &:disabled {
       background-color: map.get($color-config, disabled-color);
+    }
+
+    &-primary {
+      background-color: map.get($color-config, primary-color);
+    }
+
+    &-warning {
+      background-color: map.get($color-config, warning-color);
     }
   }
 }
