@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Directive, EventEmitter, Input, Output } from '@angular/core';
 
-import { Constructor } from '@quentinpigne/ts-utils/mixins';
+import { Constructor, MixinBuilder } from '@quentinpigne/ts-utils/mixins';
 import {
   ClassWithChangeDetectorRef,
   mixinCheckboxControlValueAccessor,
@@ -14,8 +14,13 @@ import { getUniqueComponentId } from '@quentinpigne/ng-core/utils';
 
 import { Checkbox } from './types';
 
-const _CheckboxBase: Constructor<Checkbox> = mixinCheckboxControlValueAccessor(
-  mixinChecked(mixinDisabled(mixinName(mixinRequired(mixinValue<string>()(ClassWithChangeDetectorRef))))),
+const _CheckboxBase: Constructor<Checkbox> = MixinBuilder.mix(ClassWithChangeDetectorRef).with(
+  mixinValue<string>(),
+  mixinRequired,
+  mixinName(),
+  mixinDisabled,
+  mixinChecked,
+  mixinCheckboxControlValueAccessor,
 );
 
 @Directive({

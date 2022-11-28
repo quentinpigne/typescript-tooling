@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Directive, EventEmitter, Input, Output, QueryList } from '@angular/core';
 
-import { Constructor } from '@quentinpigne/ts-utils/mixins';
+import { Constructor, MixinBuilder } from '@quentinpigne/ts-utils/mixins';
 import {
   ClassWithChangeDetectorRef,
   mixinDisabled,
@@ -14,13 +14,13 @@ import { getUniqueComponentId } from '@quentinpigne/ng-core/utils';
 
 import { RadioButton, RadioGroup } from './types';
 
-const _RadioGroupBase: Constructor<RadioGroup> = mixinRadioControlValueAccessor(
-  mixinDisabled(
-    mixinName(
-      mixinRequired(mixinSelected<RadioButton>()(mixinValue()(ClassWithChangeDetectorRef))),
-      getUniqueComponentId('cdk-radio-group'),
-    ),
-  ),
+const _RadioGroupBase: Constructor<RadioGroup> = MixinBuilder.mix(ClassWithChangeDetectorRef).with(
+  mixinValue(),
+  mixinSelected<RadioButton>(),
+  mixinRequired,
+  mixinName(getUniqueComponentId('cdk-radio-group')),
+  mixinDisabled,
+  mixinRadioControlValueAccessor,
 );
 
 @Directive()

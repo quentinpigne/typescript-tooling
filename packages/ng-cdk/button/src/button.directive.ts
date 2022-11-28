@@ -6,12 +6,16 @@ import {
   mixinCssClass,
   mixinDisabled,
 } from '@quentinpigne/ng-core/mixins';
-import { Constructor } from '@quentinpigne/ts-utils/mixins';
+import { Constructor, MixinBuilder } from '@quentinpigne/ts-utils/mixins';
 
 import { Button } from './types';
 
 const _ButtonBase = (cssClass: string): Constructor<Button> =>
-  mixinColor(mixinDisabled(mixinCssClass(ClassWithChangeDetectorRefAndElementRef, cssClass)), 'primary');
+  MixinBuilder.mix(ClassWithChangeDetectorRefAndElementRef).with(
+    mixinCssClass(cssClass),
+    mixinColor('primary'),
+    mixinDisabled,
+  );
 
 export function ButtonCdk(cssClass: string): Constructor<Button> {
   @Directive({

@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Directive, EventEmitter, Input, Output } from '@angular/core';
 
-import { Constructor } from '@quentinpigne/ts-utils/mixins';
+import { Constructor, MixinBuilder } from '@quentinpigne/ts-utils/mixins';
 import {
   ClassWithChangeDetectorRef,
   mixinDisabled,
@@ -11,8 +11,11 @@ import {
 
 import { Select } from './types';
 
-const _SelectBase: Constructor<Select> = mixinSelectControlValueAccessor(
-  mixinDisabled(mixinRequired(mixinValue()(ClassWithChangeDetectorRef))),
+const _SelectBase: Constructor<Select> = MixinBuilder.mix(ClassWithChangeDetectorRef).with(
+  mixinValue(),
+  mixinRequired,
+  mixinDisabled,
+  mixinSelectControlValueAccessor,
 );
 
 @Directive({

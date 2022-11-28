@@ -1,12 +1,14 @@
 import { ChangeDetectorRef, Directive, Input, OnInit } from '@angular/core';
 
-import { Constructor } from '@quentinpigne/ts-utils/mixins';
+import { Constructor, MixinBuilder } from '@quentinpigne/ts-utils/mixins';
 import { ClassWithChangeDetectorRef, mixinDisabled, mixinSelected, mixinValue } from '@quentinpigne/ng-core/mixins';
 
 import { Option, Select } from './types';
 
-const _OptionBase: Constructor<Option> = mixinDisabled(
-  mixinValue()(mixinSelected<boolean>()(ClassWithChangeDetectorRef)),
+const _OptionBase: Constructor<Option> = MixinBuilder.mix(ClassWithChangeDetectorRef).with(
+  mixinSelected<boolean>(),
+  mixinValue(),
+  mixinDisabled,
 );
 
 @Directive({

@@ -1,11 +1,13 @@
 import { Directive, ElementRef, Renderer2 } from '@angular/core';
 
-import { Constructor } from '@quentinpigne/ts-utils/mixins';
+import { Constructor, MixinBuilder } from '@quentinpigne/ts-utils/mixins';
 import { EmptyClass, HasContent, mixinContent } from '@quentinpigne/ng-core/mixins';
 
 import { Badge, BadgeContent, BadgePosition } from './types';
 
-const _BadgeBase: Constructor<HasContent<BadgeContent>> = mixinContent<BadgeContent>()(EmptyClass);
+const _BadgeBase: Constructor<HasContent<BadgeContent>> = MixinBuilder.mix(EmptyClass).with(
+  mixinContent<BadgeContent>(),
+);
 
 @Directive()
 export class BadgeCdk extends _BadgeBase implements Badge {
