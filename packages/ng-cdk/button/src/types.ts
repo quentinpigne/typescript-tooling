@@ -6,4 +6,8 @@ import {
   HasElementRef,
 } from '@quentinpigne/ng-core/mixins';
 
-export type Button = CanBeDisabled & HasChangeDetectorRef & HasColor & HasCssClass & HasElementRef;
+export type Button<ColorPalette extends string = string> = CanBeDisabled &
+  HasChangeDetectorRef &
+  HasColor<ColorPalette> &
+  HasCssClass &
+  HasElementRef;

@@ -2,33 +2,35 @@ import { Constructor } from '@quentinpigne/ts-utils/mixins';
 
 import { HasCssClass, HasElementRef } from '../types';
 
-export interface HasColor {
-  color?: string;
-  defaultColor?: string;
+export interface HasColor<ColorPalette extends string = string> {
+  color?: ColorPalette;
+  defaultColor?: ColorPalette;
 }
 
-export function mixinColor(defaultColor?: string) {
-  return function <TBase extends Constructor<HasCssClass & HasElementRef>>(Base: TBase): TBase & Constructor<HasColor> {
+export function mixinColor<ColorPalette extends string = string>(defaultColor?: ColorPalette) {
+  return function <TBase extends Constructor<HasCssClass & HasElementRef>>(
+    Base: TBase,
+  ): TBase & Constructor<HasColor<ColorPalette>> {
     return class Color extends Base {
-      private _color?: string;
+      private _color?: ColorPalette;
       defaultColor = defaultColor;
 
-      get color(): string | undefined {
+      get color(): ColorPalette | undefined {
         return this._color;
       }
 
-      set color(color: string | undefined) {
-        color = color || this.defaultColor;
+      set color(newColor: ColorPalette | undefined) {
+        const colorToSet: ColorPalette | undefined = newColor || this.defaultColor;
 
-        if (color !== this.color) {
+        if (colorToSet !== this.color) {
           if (this._color) {
             this._elementRef?.nativeElement.classList.remove(`${this.cssClass}-${this.color}`);
           }
-          if (color && color !== '') {
-            this._elementRef?.nativeElement.classList.add(`${this.cssClass}-${color}`);
+          if (colorToSet && colorToSet !== '') {
+            this._elementRef?.nativeElement.classList.add(`${this.cssClass}-${colorToSet}`);
           }
 
-          this._color = color;
+          this._color = colorToSet;
         }
       }
 
