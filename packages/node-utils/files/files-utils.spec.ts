@@ -35,4 +35,14 @@ describe('getAllFiles', () => {
       { fileName: 'file4.txt', path: ['folder2', 'subfolder2'] },
     ]);
   });
+
+  it('should return filtered files of a specified directory', () => {
+    expect(
+      getAllFiles('rootDir', undefined, undefined, { filter: (fullPath: string) => !!fullPath.match('subfolder2') }),
+    ).toEqual([
+      { fileName: 'file1.js', path: ['folder1', 'subfolder1'] },
+      { fileName: 'file2.txt', path: ['folder1', 'subfolder1'] },
+      { fileName: 'file3.txt', path: ['folder2', 'subfolder1'] },
+    ]);
+  });
 });

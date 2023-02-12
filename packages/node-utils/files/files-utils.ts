@@ -6,20 +6,26 @@ export interface File {
   fileName: string;
 }
 
-export function getAllFiles(dirPath: string, basePath?: string, arrayOfFiles?: File[]) {
-  basePath = basePath || dirPath;
-  arrayOfFiles = arrayOfFiles || [];
+export interface Options {
+  filter: (fullPath: string) => boolean;
+}
+
+export function getAllFiles(dirPath: string, basePath?: string, arrayOfFiles?: File[], options?: Options): File[] {
+  const currentBasePath: string = basePath || dirPath;
+  let resultArrayOfFiles = arrayOfFiles || [];
 
   fs.readdirSync(dirPath, { withFileTypes: true }).forEach((file: fs.Dirent) => {
-    if (file.isDirectory()) {
-      arrayOfFiles = getAllFiles(path.join(dirPath, file.name), basePath, arrayOfFiles);
-    } else {
-      const filePath: string = path.join(dirPath, file.name);
-      const relativePath: string[] = path.relative(basePath, filePath).split('/');
-      const fileName: string = relativePath.pop();
-      arrayOfFiles.push({ path: relativePath, fileName });
+    if (!options?.filter(path.join(dirPath, file.name))) {
+      if (file.isDirectory()) {
+        resultArrayOfFiles = getAllFiles(path.join(dirPath, file.name), currentBasePath, resultArrayOfFiles, options);
+      } else {
+        const filePath: string = path.join(dirPath, file.name);
+        const relativePath: string[] = path.relative(currentBasePath, filePath).split('/');
+        const fileName: string = relativePath.pop() || '';
+        resultArrayOfFiles.push({ path: relativePath, fileName });
+      }
     }
   });
 
-  return arrayOfFiles;
+  return resultArrayOfFiles;
 }
