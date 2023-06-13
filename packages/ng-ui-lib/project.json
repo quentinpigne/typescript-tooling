@@ -1,10 +1,12 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "name": "ng-ui-lib",
   "projectType": "library",
   "sourceRoot": "packages/ng-ui-lib",
   "prefix": "ui",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
+      "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/packages/ng-ui-lib"],
       "options": {
         "project": "packages/ng-ui-lib/ng-package.json"
@@ -20,7 +22,7 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/ng-ui-lib"],
       "options": {
         "jestConfig": "packages/ng-ui-lib/jest.config.ts",
@@ -28,7 +30,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": ["packages/ng-ui-lib/**/*.ts", "packages/ng-ui-lib/**/*.html"]
       }
@@ -71,6 +73,5 @@
       }
     }
   },
-  "tags": [],
-  "name": "ng-ui-lib"
+  "tags": []
 }

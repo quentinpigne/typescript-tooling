@@ -3,7 +3,14 @@ const rootMain = require('../../../.storybook/main');
 module.exports = {
   ...rootMain,
 
-  core: { ...rootMain.core, builder: 'webpack5' },
+  framework: {
+    name: "@storybook/angular",
+    options: {}
+  },
+
+  core: {
+    builder: 'webpack5'
+  },
 
   stories: [...rootMain.stories, '../**/*.stories.mdx', '../**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [...rootMain.addons],
