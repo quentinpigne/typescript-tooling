@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/angular';
+import { StoryObj, Meta } from '@storybook/angular';
 
 import { ProgressBarComponent } from './progress-bar.component';
 
@@ -7,20 +7,28 @@ export default {
   component: ProgressBarComponent,
 } as Meta;
 
-const Template: Story<ProgressBarComponent> = (args) => ({
-  props: args,
-  template: `
-    <ui-progress-bar [mode]="mode" [value]="value"></ui-progress-bar>
-  `,
-});
+type Story = StoryObj<ProgressBarComponent>;
 
-export const Determinate = Template.bind({});
-Determinate.args = {
-  mode: 'determinate',
-  value: 38,
+const Template: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <ui-progress-bar [mode]="mode" [value]="value"></ui-progress-bar>
+    `,
+  }),
 };
 
-export const Indeterminate = Template.bind({});
-Indeterminate.args = {
-  mode: 'indeterminate',
+export const Determinate: Story = {
+  args: {
+    mode: 'determinate',
+    value: 38,
+  },
+  render: Template.render,
+};
+
+export const Indeterminate: Story = {
+  args: {
+    mode: 'indeterminate',
+  },
+  render: Template.render,
 };

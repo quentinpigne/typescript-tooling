@@ -17,7 +17,7 @@
     }
   ],
   "compilerOptions": {
-    "target": "es2020",
+    "target": "ES2022",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,

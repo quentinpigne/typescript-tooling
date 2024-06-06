@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/angular';
+import { StoryObj, Meta } from '@storybook/angular';
 
 import { CheckboxComponent } from './checkbox.component';
 
@@ -7,20 +7,28 @@ export default {
   component: CheckboxComponent,
 } as Meta;
 
-const Template: Story<CheckboxComponent & { libelle: string }> = (args) => ({
-  props: args,
-  template: `
-    <ui-checkbox [disabled]=${args.disabled}>{{libelle}}</ui-checkbox>
-  `,
-});
+type Story = StoryObj<CheckboxComponent & { libelle: string }>;
 
-export const Principal = Template.bind({});
-Principal.args = {
-  libelle: 'Click to check',
+const Template: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <ui-checkbox [disabled]=${args.disabled}>{{libelle}}</ui-checkbox>
+    `,
+  }),
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  libelle: 'Click to check',
-  disabled: true,
+export const Principal: Story = {
+  args: {
+    libelle: 'Click to check',
+  },
+  render: Template.render,
+};
+
+export const Disabled: Story = {
+  args: {
+    libelle: 'Click to check',
+    disabled: true,
+  },
+  render: Template.render,
 };

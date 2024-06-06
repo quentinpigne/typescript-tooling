@@ -1,4 +1,4 @@
-import { Story, Meta, moduleMetadata } from '@storybook/angular';
+import { StoryObj, Meta, moduleMetadata } from '@storybook/angular';
 
 import { BadgeComponent } from './standalone/badge.component';
 import { BadgeDirective } from './embedded/badge.directive';
@@ -12,28 +12,28 @@ export default {
   ],
 } as Meta;
 
-const StandaloneTemplate: Story<BadgeComponent> = (args) => ({
-  props: args,
-  template: `
-    <ui-badge [content]="content"></ui-badge>
-  `,
-});
-
-const EmbeddedTemplate: Story<BadgeDirective & { libelle: string }> = (args) => ({
-  props: args,
-  template: `
-    <span [uiBadge]="content" [uiBadgePosition]="position">{{libelle}}</span>
-  `,
-});
-
-export const Standalone = StandaloneTemplate.bind({});
-Standalone.args = {
-  content: 1,
+export const Standalone: StoryObj<BadgeComponent> = {
+  args: {
+    content: 1,
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <ui-badge [content]="content"></ui-badge>
+    `,
+  }),
 };
 
-export const Embedded = EmbeddedTemplate.bind({});
-Embedded.args = {
-  libelle: 'Principal',
-  content: '1',
-  position: 'top right',
+export const Embedded: StoryObj<BadgeDirective & { libelle: string }> = {
+  args: {
+    libelle: 'Principal',
+    content: '1',
+    position: 'top right',
+  },
+  render: (args) => ({
+    props: args,
+    template: `
+      <span [uiBadge]="content" [uiBadgePosition]="position">{{libelle}}</span>
+    `,
+  }),
 };

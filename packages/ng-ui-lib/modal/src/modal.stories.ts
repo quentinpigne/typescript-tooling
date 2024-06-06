@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Story, Meta, moduleMetadata } from '@storybook/angular';
+import { StoryObj, Meta, moduleMetadata } from '@storybook/angular';
 
 import { ModalRef } from './modal-ref';
 import { ModalModule } from './modal.module';
@@ -67,10 +67,11 @@ export default {
   ],
 } as Meta;
 
-const Template: Story<Record<string, unknown>> = (args) => ({
-  props: args,
-  template: `<ui-modal-open-button></ui-modal-open-button>`,
-});
+type Story = StoryObj<Record<string, unknown>>;
 
-export const Principal = Template.bind({});
-Principal.args = {};
+export const Principal: Story = {
+  render: (args) => ({
+    props: args,
+    template: `<ui-modal-open-button></ui-modal-open-button>`,
+  }),
+};

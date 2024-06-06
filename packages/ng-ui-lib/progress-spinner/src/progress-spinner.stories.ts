@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/angular';
+import { StoryObj, Meta } from '@storybook/angular';
 
 import { ProgressSpinnerComponent } from './progress-spinner.component';
 
@@ -7,12 +7,13 @@ export default {
   component: ProgressSpinnerComponent,
 } as Meta;
 
-const Template: Story<ProgressSpinnerComponent> = (args) => ({
-  props: args,
-  template: `
-    <ui-progress-spinner></ui-progress-spinner>
-  `,
-});
+type Story = StoryObj<ProgressSpinnerComponent>;
 
-export const Principal = Template.bind({});
-Principal.args = {};
+export const Principal: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <ui-progress-spinner></ui-progress-spinner>
+    `,
+  }),
+};

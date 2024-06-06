@@ -1,9 +1,10 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "name": "ng-ui-lib",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/ng-ui-lib",
   "prefix": "ui",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:package",
@@ -25,15 +26,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/ng-ui-lib"],
       "options": {
-        "jestConfig": "packages/ng-ui-lib/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/ng-ui-lib/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": ["packages/ng-ui-lib/**/*.ts", "packages/ng-ui-lib/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "storybook": {
       "executor": "@storybook/angular:start-storybook",
@@ -41,11 +38,7 @@
         "port": 4400,
         "configDir": "packages/ng-ui-lib/.storybook",
         "browserTarget": "ng-ui-lib:build-storybook",
-        "compodoc": false,
-        "styles": ["packages/ng-ui-lib/theming/themes/base-theme.scss"],
-        "stylePreprocessorOptions": {
-          "includePaths": ["packages/ng-cdk/button/src", "packages/ng-cdk/form-field/src"]
-        }
+        "compodoc": false
       },
       "configurations": {
         "ci": {
@@ -55,16 +48,19 @@
     },
     "build-storybook": {
       "executor": "@storybook/angular:build-storybook",
-      "outputs": ["{options.outputPath}"],
+      "outputs": ["{options.outputDir}"],
       "options": {
         "outputDir": "dist/storybook/ng-ui-lib",
         "configDir": "packages/ng-ui-lib/.storybook",
         "browserTarget": "ng-ui-lib:build-storybook",
-        "compodoc": false,
         "styles": ["packages/ng-ui-lib/theming/themes/base-theme.scss"],
         "stylePreprocessorOptions": {
-          "includePaths": ["packages/ng-cdk/button/src", "packages/ng-cdk/form-field/src"]
-        }
+          "includePaths": [
+            "packages/ng-cdk/button/src",
+            "packages/ng-cdk/form-field/src"
+          ]
+        },
+        "compodoc": false
       },
       "configurations": {
         "ci": {
@@ -72,6 +68,5 @@
         }
       }
     }
-  },
-  "tags": []
+  }
 }

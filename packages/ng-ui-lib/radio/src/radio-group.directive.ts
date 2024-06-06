@@ -31,5 +31,5 @@ export class RadioGroupDirective extends RadioGroupCdk<RadioButtonComponent> {
   @HostBinding('class') cssClass: string = 'ui-radio-group';
 
   @ContentChildren(forwardRef(() => RadioButtonComponent), { descendants: true })
-  override _radios: QueryList<RadioButtonComponent> | undefined;
+  override _radios: QueryList<RadioButtonComponent> | undefined = undefined;
 }

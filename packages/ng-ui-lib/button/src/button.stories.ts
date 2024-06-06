@@ -1,4 +1,4 @@
-import { Story, Meta } from '@storybook/angular';
+import { Meta, StoryObj } from '@storybook/angular';
 
 import { ButtonComponent } from './button.component';
 
@@ -21,26 +21,36 @@ export default {
   },
 } as Meta;
 
-const Template: Story<ButtonComponent & { libelle: string }> = (args) => ({
-  props: args,
-  template: `
-    <button ui-button [color]=${args.color} [disabled]=${args.disabled}>{{libelle}}</button>
-  `,
-});
+type Story = StoryObj<ButtonComponent & { libelle: string }>;
 
-export const Primary = Template.bind({});
-Primary.args = {
-  libelle: 'Principal',
+const Template: Story = {
+  render: (args) => ({
+    props: args,
+    template: `
+      <button ui-button [color]=${args.color} [disabled]=${args.disabled}>{{libelle}}</button>
+    `,
+  }),
 };
 
-export const Warning = Template.bind({});
-Warning.args = {
-  libelle: 'Warning',
-  color: 'warning',
+export const Primary: Story = {
+  args: {
+    libelle: 'Principal',
+  },
+  render: Template.render,
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  libelle: 'Disabled',
-  disabled: true,
+export const Warning: Story = {
+  args: {
+    libelle: 'Warning',
+    color: 'warning',
+  },
+  render: Template.render,
+};
+
+export const Disabled: Story = {
+  args: {
+    libelle: 'Disabled',
+    disabled: true,
+  },
+  render: Template.render,
 };

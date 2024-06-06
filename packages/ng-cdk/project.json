@@ -1,9 +1,10 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "name": "ng-cdk",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "packages/ng-cdk",
   "prefix": "cdk",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:package",
@@ -25,16 +26,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/packages/ng-cdk"],
       "options": {
-        "jestConfig": "packages/ng-cdk/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "packages/ng-cdk/jest.config.ts"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
-      "options": {
-        "lintFilePatterns": ["packages/ng-cdk/**/*.ts", "packages/ng-cdk/**/*.html"]
-      }
+      "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": []
+  }
 }
