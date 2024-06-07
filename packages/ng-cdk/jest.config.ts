@@ -2,7 +2,7 @@
 export default {
   displayName: 'ng-cdk',
   preset: '../../jest.preset.js',
-  setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
+  setupFilesAfterEnv: ['<rootDir>/test-setup.ts'],
   globals: {},
   coverageDirectory: '../../coverage/packages/ng-cdk',
   transform: {
