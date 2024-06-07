@@ -8,7 +8,7 @@ describe('BadgeDirective', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [BadgeDirective],
+      imports: [BadgeDirective],
     }).compileComponents();
   });
 

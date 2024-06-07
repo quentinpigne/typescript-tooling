@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulati
 import { Column } from '../types/column';
 
 @Component({
+  standalone: true,
   selector: 'thead[ui-thead]',
   exportAs: 'uiTableHead',
   templateUrl: './table-head.component.html',

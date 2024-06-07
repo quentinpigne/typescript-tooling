@@ -14,6 +14,7 @@ import { RadioButtonCdk } from '@quentinpigne/ng-cdk/radio';
 import { RadioGroupDirective, UI_RADIO_GROUP } from './radio-group.directive';
 
 @Component({
+  standalone: true,
   selector: 'ui-radio-button',
   exportAs: 'uiRadioButton',
   templateUrl: './radio-button.component.html',

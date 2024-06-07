@@ -1,13 +1,16 @@
 import { StoryObj, Meta, moduleMetadata } from '@storybook/angular';
 
-import { CardModule } from './card.module';
 import { CardComponent } from './card.component';
+import { CardTitleDirective } from './card-title/card-title.directive';
+import { CardSubtitleDirective } from './card-subtitle/card-subtitle.directive';
+import { CardContentDirective } from './card-content/card-content.directive';
+import { CardFooterDirective } from './card-footer/card-footer.directive';
 
 export default {
   title: 'Layout/Card',
   decorators: [
     moduleMetadata({
-      imports: [CardModule],
+      imports: [CardComponent, CardTitleDirective, CardSubtitleDirective, CardContentDirective, CardFooterDirective],
     }),
   ],
 } as Meta;

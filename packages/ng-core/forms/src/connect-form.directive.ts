@@ -3,8 +3,8 @@ import { Directive, Input, OnChanges } from '@angular/core';
 import { FormGroup, FormGroupDirective } from '@angular/forms';
 
 @Directive({
-  selector: '[connectForm]',
   standalone: true,
+  selector: '[connectForm]',
 })
 export class ConnectFormDirective<T> implements OnChanges {
   @Input() hostComponent: any;

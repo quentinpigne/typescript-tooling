@@ -8,6 +8,7 @@ import { OverlayRef, OverlayService, RelativePosition, RelativePositionStrategy 
 import { TooltipComponent } from './tooltip.component';
 
 @Directive({
+  standalone: true,
   selector: '[uiTooltip]',
   exportAs: 'uiTooltip',
 })

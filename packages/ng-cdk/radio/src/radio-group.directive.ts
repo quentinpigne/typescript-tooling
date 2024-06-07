@@ -23,7 +23,9 @@ const _RadioGroupBase: Constructor<RadioGroup> = MixinBuilder.mix(ClassWithChang
   mixinRadioControlValueAccessor,
 );
 
-@Directive()
+@Directive({
+  standalone: true,
+})
 export abstract class RadioGroupCdk<T extends RadioButton> extends _RadioGroupBase implements RadioGroup {
   protected _radios: QueryList<T> | undefined;
 

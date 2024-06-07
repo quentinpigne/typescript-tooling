@@ -24,6 +24,7 @@ const _CheckboxBase: Constructor<Checkbox> = MixinBuilder.mix(ClassWithChangeDet
 );
 
 @Directive({
+  standalone: true,
   inputs: ['checked', 'disabled', 'name', 'required', 'value'],
 })
 export class CheckboxCdk extends _CheckboxBase implements Checkbox {

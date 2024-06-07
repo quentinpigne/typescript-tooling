@@ -1,6 +1,6 @@
 import { StoryObj, Meta, moduleMetadata } from '@storybook/angular';
 
-import { FormFieldModule } from '@quentinpigne/ng-ui-lib/form-field';
+import { FormFieldComponent } from '@quentinpigne/ng-ui-lib/form-field';
 
 import { InputDirective } from './input.directive';
 
@@ -9,8 +9,7 @@ export default {
   component: InputDirective,
   decorators: [
     moduleMetadata({
-      imports: [FormFieldModule],
-      declarations: [InputDirective],
+      imports: [InputDirective, FormFieldComponent],
     }),
   ],
 } as Meta;

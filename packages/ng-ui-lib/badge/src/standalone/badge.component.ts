@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } fr
 import { BadgeCdk } from '@quentinpigne/ng-cdk/badge';
 
 @Component({
+  standalone: true,
   selector: 'ui-badge',
   exportAs: 'uiBadge',
   template: `<span>{{ content }}</span>`,

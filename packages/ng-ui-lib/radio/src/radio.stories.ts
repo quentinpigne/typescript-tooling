@@ -8,7 +8,7 @@ export default {
   component: RadioButtonComponent,
   decorators: [
     moduleMetadata({
-      declarations: [RadioButtonComponent, RadioGroupDirective],
+      imports: [RadioButtonComponent, RadioGroupDirective],
     }),
   ],
 } as Meta;

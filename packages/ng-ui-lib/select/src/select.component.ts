@@ -23,6 +23,7 @@ export const UI_SELECT_CONTROL_VALUE_ACCESSOR: Provider = {
 };
 
 @Component({
+  standalone: true,
   selector: 'ui-select',
   exportAs: 'uiSelect',
   templateUrl: './select.component.html',

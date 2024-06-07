@@ -13,6 +13,7 @@ import {
 import { TemplatePortal } from '@quentinpigne/ng-core/portal';
 
 @Component({
+  standalone: true,
   selector: 'ui-tab',
   exportAs: 'uiTab',
   template: '<ng-template><ng-content></ng-content></ng-template>',

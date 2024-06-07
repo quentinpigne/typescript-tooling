@@ -2,5 +2,7 @@ import { Directive } from '@angular/core';
 
 const _HintBase = class {};
 
-@Directive()
+@Directive({
+  standalone: true,
+})
 export class HintCdk extends _HintBase {}

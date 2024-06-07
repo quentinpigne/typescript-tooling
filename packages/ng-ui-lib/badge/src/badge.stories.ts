@@ -7,7 +7,7 @@ export default {
   title: 'Display/Badge',
   decorators: [
     moduleMetadata({
-      declarations: [BadgeComponent, BadgeDirective],
+      imports: [BadgeComponent, BadgeDirective],
     }),
   ],
 } as Meta;

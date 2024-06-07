@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'ui-progress-spinner',
   exportAs: 'uiProgressSpinner',
   templateUrl: './progress-spinner.component.html',

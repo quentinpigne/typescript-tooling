@@ -3,6 +3,7 @@ import { Directive, HostBinding } from '@angular/core';
 import { InputCdk } from '@quentinpigne/ng-cdk/input';
 
 @Directive({
+  standalone: true,
   selector: 'input[uiInput]',
   exportAs: 'uiInput',
 })

@@ -1,14 +1,14 @@
 import { StoryObj, Meta, moduleMetadata } from '@storybook/angular';
 
 import { TooltipDirective } from './tooltip.directive';
-import { TooltipModule } from './tooltip.module';
+import { TooltipComponent } from './tooltip.component';
 
 export default {
   title: 'Overlay/Tooltip',
   component: TooltipDirective,
   decorators: [
     moduleMetadata({
-      imports: [TooltipModule],
+      imports: [TooltipDirective, TooltipComponent],
     }),
   ],
 } as Meta;

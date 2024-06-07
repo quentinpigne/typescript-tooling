@@ -1,13 +1,13 @@
 import { StoryObj, Meta, moduleMetadata } from '@storybook/angular';
 
-import { TabsModule } from './tabs.module';
 import { TabGroupComponent } from './tab-group.component';
+import { TabComponent } from './tab.component';
 
 export default {
   title: 'Layout/Tabs',
   decorators: [
     moduleMetadata({
-      imports: [TabsModule],
+      imports: [TabGroupComponent, TabComponent],
     }),
   ],
 } as Meta;

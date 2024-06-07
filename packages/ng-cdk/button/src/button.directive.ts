@@ -25,6 +25,7 @@ export function ButtonCdk<ColorPalette extends string = string>(
   defaultColor?: ColorPalette,
 ): Constructor<Button<ColorPalette>> {
   @Directive({
+    standalone: true,
     inputs: ['color', 'disabled'],
     host: {
       '[attr.disabled]': 'disabled || null',

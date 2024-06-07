@@ -16,6 +16,7 @@ import { Option, OptionCdk } from '@quentinpigne/ng-cdk/select';
 import { SelectComponent, UI_SELECT } from './select.component';
 
 @Component({
+  standalone: true,
   selector: 'ui-option',
   exportAs: 'uiOption',
   templateUrl: './option.component.html',

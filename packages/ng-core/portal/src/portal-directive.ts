@@ -4,6 +4,7 @@ import { ComponentPortal, Portal, TemplatePortal } from './portal';
 import { BasePortalOutlet } from './portal-outlet';
 
 @Directive({
+  standalone: true,
   selector: '[ngPortalOutlet]',
   exportAs: 'ngPortalOutlet',
 })

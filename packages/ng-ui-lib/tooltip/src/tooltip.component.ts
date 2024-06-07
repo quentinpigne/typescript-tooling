@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'ui-tooltip',
   template: `<div class="tooltip-container">{{ content }}</div>`,
   styleUrls: ['./tooltip.component.scss'],

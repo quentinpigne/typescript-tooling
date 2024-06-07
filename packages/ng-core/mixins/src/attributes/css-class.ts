@@ -6,7 +6,9 @@ import { HasCssClass } from '../types';
 
 export function mixinCssClass(cssClass: string) {
   return function <TBase extends Constructor>(Base: TBase): TBase & Constructor<HasCssClass> {
-    @Directive()
+    @Directive({
+      standalone: true,
+    })
     class CssClassDirective extends Base {
       @HostBinding('class') cssClass: string = cssClass;
 

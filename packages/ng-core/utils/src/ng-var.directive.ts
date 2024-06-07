@@ -6,6 +6,7 @@ type Context<T> = {
 };
 
 @Directive({
+  standalone: true,
   selector: '[ngVar]',
 })
 export class VarDirective<T> {

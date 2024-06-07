@@ -10,6 +10,7 @@ const UI_CHECKBOX_VALUE_ACCESSOR_PROVIDER = {
 };
 
 @Component({
+  standalone: true,
   selector: 'ui-checkbox',
   exportAs: 'uiCheckbox',
   templateUrl: './checkbox.component.html',

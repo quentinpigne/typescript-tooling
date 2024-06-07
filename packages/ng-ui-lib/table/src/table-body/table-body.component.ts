@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulati
 import { Column } from '../types/column';
 
 @Component({
+  standalone: true,
   selector: 'tbody[ui-tbody]',
   exportAs: 'uiTableBody',
   templateUrl: './table-body.component.html',

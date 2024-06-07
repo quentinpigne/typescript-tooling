@@ -12,6 +12,7 @@ const _OptionBase: Constructor<Option> = MixinBuilder.mix(ClassWithChangeDetecto
 );
 
 @Directive({
+  standalone: true,
   inputs: ['disabled', 'value'],
 })
 export abstract class OptionCdk extends _OptionBase implements OnInit, Option {

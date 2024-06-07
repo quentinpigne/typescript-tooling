@@ -8,7 +8,7 @@ export default {
   component: SelectComponent,
   decorators: [
     moduleMetadata({
-      declarations: [OptionComponent, SelectComponent],
+      imports: [OptionComponent, SelectComponent],
     }),
   ],
   argTypes: { selectionChange: { action: 'selectionChange' } },

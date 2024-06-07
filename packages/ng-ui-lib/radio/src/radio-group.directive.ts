@@ -22,6 +22,7 @@ export const UI_RADIO_GROUP_CONTROL_VALUE_ACCESSOR: Provider = {
 };
 
 @Directive({
+  standalone: true,
   // eslint-disable-next-line @angular-eslint/directive-selector
   selector: 'ui-radio-group',
   exportAs: 'uiRadioGroup',

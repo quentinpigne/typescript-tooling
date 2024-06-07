@@ -22,6 +22,7 @@ const _RadioButtonBase: Constructor<RadioButtonMixin> = MixinBuilder.mix(ClassWi
 );
 
 @Directive({
+  standalone: true,
   inputs: ['name'],
 })
 export abstract class RadioButtonCdk<T extends RadioGroup> extends _RadioButtonBase implements RadioButton {

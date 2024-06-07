@@ -9,7 +9,9 @@ const _BadgeBase: Constructor<HasContent<BadgeContent>> = MixinBuilder.mix(Empty
   mixinContent<BadgeContent>(),
 );
 
-@Directive()
+@Directive({
+  standalone: true,
+})
 export class BadgeCdk extends _BadgeBase implements Badge {
   isTop: boolean = true;
   isBottom: boolean = false;

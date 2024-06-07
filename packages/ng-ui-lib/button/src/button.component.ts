@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, ElementRef, View
 import { ButtonCdk } from '@quentinpigne/ng-cdk/button';
 
 @Component({
+  standalone: true,
   selector: 'button[ui-button]',
   exportAs: 'uiButton',
   template: '<ng-content></ng-content>',

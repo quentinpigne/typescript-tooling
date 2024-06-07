@@ -1,5 +1,7 @@
 <tr>
-  <th *ngFor="let column of columns">
-    <span class="cell-content">{{ column.columnName }}</span>
-  </th>
+  @for (column of columns; track $index) {
+    <th>
+      <span class="cell-content">{{ column.columnName }}</span>
+    </th>
+  }
 </tr>

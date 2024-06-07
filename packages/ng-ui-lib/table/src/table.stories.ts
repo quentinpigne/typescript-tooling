@@ -1,7 +1,8 @@
 import { StoryObj, Meta, moduleMetadata } from '@storybook/angular';
 
 import { TableComponent } from './table.component';
-import { TableModule } from './table.module';
+import { TableHeadComponent } from './table-head/table-head.component';
+import { TableBodyComponent } from './table-body/table-body.component';
 
 type MockDataType = {
   firstname: string;
@@ -15,7 +16,7 @@ export default {
   component: TableComponent,
   decorators: [
     moduleMetadata({
-      imports: [TableModule],
+      imports: [TableHeadComponent, TableBodyComponent],
     }),
   ],
 } as Meta;

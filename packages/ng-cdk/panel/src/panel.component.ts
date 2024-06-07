@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, HostBinding, Input, ViewEncapsulation } from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'cdk-panel',
   exportAs: 'cdkPanel',
   template: '<ng-content></ng-content>',

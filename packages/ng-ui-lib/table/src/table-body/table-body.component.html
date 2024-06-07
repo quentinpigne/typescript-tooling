@@ -1,7 +1,11 @@
-<tr *ngFor="let row of data">
-  <td *ngFor="let column of columns">
-    <div class="cell-content-container">
-      <span class="cell-content">{{ row[column.attributeName] }}</span>
-    </div>
-  </td>
-</tr>
+@for (row of data; track $index) {
+  <tr>
+    @for (column of columns; track $index) {
+      <td>
+        <div class="cell-content-container">
+          <span class="cell-content">{{ row[column.attributeName] }}</span>
+        </div>
+      </td>
+    }
+  </tr>
+}

@@ -5,6 +5,7 @@ import { BadgeCdk } from '@quentinpigne/ng-cdk/badge';
 const BADGE_CLASS: string = 'ui-badge';
 
 @Directive({
+  standalone: true,
   selector: '[uiBadge]',
   exportAs: 'uiBadge',
   inputs: ['position: uiBadgePosition', 'content: uiBadge'],

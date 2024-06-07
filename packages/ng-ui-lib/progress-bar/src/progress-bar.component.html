@@ -1,6 +1,14 @@
 <div [ngClass]="'ui-progress-bar ui-progress-bar-' + mode">
-  <div *ngIf="mode === 'determinate'" class="ui-progress-bar-value" [style.width]="value + '%'">
-    <div *ngIf="showValue" class="ui-progress-bar-label">{{value}}{{unit}}</div>
-  </div>
-  <div *ngIf="mode === 'indeterminate'" class="ui-progress-bar-value"></div>
+  @switch (mode) {
+    @case ('determinate') {
+      <div class="ui-progress-bar-value" [style.width]="value + '%'">
+        @if (showValue) {
+          <div class="ui-progress-bar-label">{{ value }}{{ unit }}</div>
+        }
+      </div>
+    }
+    @case ('indeterminate') {
+      <div class="ui-progress-bar-value"></div>
+    }
+  }
 </div>

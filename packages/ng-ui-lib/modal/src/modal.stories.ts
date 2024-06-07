@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { StoryObj, Meta, moduleMetadata } from '@storybook/angular';
 
 import { ModalRef } from './modal-ref';
-import { ModalModule } from './modal.module';
+import { ModalContainerComponent } from './modal-container.component';
 import { ModalService, UI_DIALOG_DATA } from './modal.service';
 
 interface ModalResult {
@@ -11,6 +11,7 @@ interface ModalResult {
 }
 
 @Component({
+  standalone: true,
   selector: 'ui-modal-open-button',
   template: `
     <button (click)="openModal()">Open Modal</button>
@@ -35,6 +36,7 @@ class ModalWrapperComponent {
 }
 
 @Component({
+  standalone: true,
   selector: 'ui-story-modal',
   template: `
     <div style="display: flex; gap: 10px;">
@@ -61,8 +63,7 @@ export default {
   title: 'Overlay/Modal',
   decorators: [
     moduleMetadata({
-      imports: [FormsModule, ModalModule],
-      declarations: [ModalComponent, ModalWrapperComponent],
+      imports: [FormsModule, ModalContainerComponent, ModalComponent, ModalWrapperComponent],
     }),
   ],
 } as Meta;

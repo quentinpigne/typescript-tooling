@@ -19,6 +19,7 @@ const _SelectBase: Constructor<Select> = MixinBuilder.mix(ClassWithChangeDetecto
 );
 
 @Directive({
+  standalone: true,
   inputs: ['disabled', 'required'],
 })
 export abstract class SelectCdk extends _SelectBase implements Select {
